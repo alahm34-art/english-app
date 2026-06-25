@@ -3108,6 +3108,15 @@
             <div class="cr-name">م. أحمد عطية الزهراني</div>
             <div class="cr-title">طالب ماجستير أمن سيبراني — جامعة الباحة<br>Eng. Ahmed Atyah Al-Zahrani</div>
             <div class="cr-badge">Ahmed SRS Pro © 2026 — All Rights Reserved</div>
+            <!-- ✅ رقم النسخة + زر تحديث إجباري (يحسم مشكلة الكاش) -->
+            <div style="margin-top:14px; padding:12px; background:rgba(0,212,255,0.06); border:1px solid rgba(0,212,255,0.2); border-radius:10px;">
+                <div style="font-size:13px; font-weight:700; color:var(--cyan); margin-bottom:4px;">النسخة / Version: <span style="font-family:monospace;">v62</span></div>
+                <div style="font-size:10px; color:var(--text-muted); margin-bottom:10px;">لو رأيت v62 فأنت على آخر نسخة / If you see v62, you have the latest</div>
+                <button onclick="forceUpdate()" style="width:100%; padding:12px; background:linear-gradient(135deg, var(--orange), var(--red)); color:white; border:none; border-radius:8px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px;">
+                    🔄 تحديث إجباري + مسح الكاش / Force Update
+                </button>
+                <div style="font-size:10px; color:var(--text-muted); margin-top:8px; line-height:1.6;">يمسح كل الكاش ويُعيد التحميل من الخادم<br>Clears all cache and reloads from server</div>
+            </div>
         </div>
     </div>
 
@@ -12427,6 +12436,43 @@ STRICT Rules:
             if (typeof goPage === 'function') goPage('study');
             if (typeof renderCatChips === 'function') renderCatChips();
             if (typeof showNext === 'function') showNext();
+        }
+
+        // ✅ تحديث إجباري: يمسح الكاش وSW القديم، يحفظ تقدّمك، يعيد التحميل
+        // Force update: clears cache & old SW, preserves progress, reloads
+        async function forceUpdate() {
+            const btn = event && event.target ? event.target : null;
+            if (btn) { btn.disabled = true; btn.innerHTML = '⏳ جاري التحديث... / Updating...'; }
+            try {
+                // 1. ألغِ تسجيل كل Service Workers القديمة / Unregister all old SWs
+                if ('serviceWorker' in navigator) {
+                    const regs = await navigator.serviceWorker.getRegistrations();
+                    for (const reg of regs) {
+                        await reg.unregister();
+                    }
+                }
+                // 2. امسح كل الكاش / Clear all caches (لكن ليس localStorage - تقدّمك آمن)
+                if ('caches' in window) {
+                    const names = await caches.keys();
+                    for (const name of names) {
+                        await caches.delete(name);
+                    }
+                }
+                // 3. ملاحظة: لا نمسح localStorage إطلاقاً - بياناتك وتقدّمك محفوظان
+                // Note: localStorage is NEVER cleared - your data & progress are safe
+                
+                showToast('✅ تم مسح الكاش - جاري إعادة التحميل / Cache cleared - reloading');
+                // 4. أعد التحميل بقوة من الخادم / Hard reload from server
+                setTimeout(() => {
+                    // إضافة معامل عشوائي لتجاوز كاش المتصفح / Add random param to bypass browser cache
+                    const url = location.href.split('?')[0] + '?v=' + Date.now();
+                    location.href = url;
+                }, 800);
+            } catch (e) {
+                if (btn) { btn.disabled = false; btn.innerHTML = '🔄 تحديث إجباري + مسح الكاش / Force Update'; }
+                showToast('حدث خطأ - حاول مرة أخرى / Error - try again');
+                console.error('Force update failed:', e);
+            }
         }
 
 
