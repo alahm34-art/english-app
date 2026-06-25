@@ -17,8 +17,8 @@
     <meta name="apple-mobile-web-app-title" content="SRS Pro">
     <meta name="theme-color" content="#0d0d1c">
     
-    <!-- ✅ PWA Manifest مضمّن لتفعيل standalone mode -->
-    <link rel="manifest" href='data:application/manifest+json,{"name":"Ahmed SRS Pro","short_name":"SRS Pro","start_url":".","display":"standalone","orientation":"portrait","background_color":"%230d0d1c","theme_color":"%230d0d1c","icons":[{"src":"data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 192 192%22%3E%3Crect width=%22192%22 height=%22192%22 fill=%22%2300d4ff%22 rx=%2240%22/%3E%3Ctext x=%2296%22 y=%22128%22 font-size=%2280%22 text-anchor=%22middle%22 fill=%22%23000%22 font-family=%22Arial%22 font-weight=%22bold%22%3ESRS%3C/text%3E%3C/svg%3E","sizes":"192x192","type":"image/svg+xml"}]}'>
+    <!-- ✅ PWA Manifest من ملف حقيقي (أقوى للتثبيت وإخفاء شريط URL) -->
+    <link rel="manifest" href="manifest.json">
 
     <meta name="author" content="Eng. Ahmed Atyah Al-Zahrani">
     <meta name="copyright" content="© 2026 Eng. Ahmed. All Rights Reserved.">
@@ -3153,17 +3153,9 @@
         console.log("%c🚀 Ahmed SRS Engine - PWA Enabled © 2026", "color: #00bcd4; font-size: 16px; font-weight: bold; background: #111; padding: 10px; border-radius: 5px;");
 
         /* ── PWA & FULLSCREEN INJECTION ── */
-        const manifestData = {
-            "name": "Ahmed SRS Pro",
-            "short_name": "SRS Pro",
-            "start_url": ".",
-            "display": "standalone",
-            "background_color": "#07070f",
-            "theme_color": "#00d4ff",
-            "icons": [{ "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any maskable" }]
-        };
-        const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
-        document.head.insertAdjacentHTML('beforeend', `<link rel="manifest" href="${URL.createObjectURL(manifestBlob)}">`);
+        // ✅ المنيفست الآن من ملف حقيقي manifest.json (مربوط في <head>)
+        // عُطّل المنيفست الديناميكي (Blob) لأنه كان يتعارض ويمنع إخفاء شريط URL
+        // The manifest is now a real file; dynamic blob manifest disabled (it conflicted)
 
         // ✅ تسجيل Service Worker من ملف حقيقي (sw.js) - ضروري لتثبيت PWA والتنبيهات
         // الطريقة القديمة (Blob URL) تمنع التثبيت الصحيح، لذا نستخدم ملفاً منفصلاً
@@ -11446,35 +11438,100 @@ STRICT Rules:
         
         // اختبار تنبيه فوري
         async function testNotification() {
-            const granted = await requestNotificationPermission();
-            if (!granted) {
-                document.getElementById('notif-status').innerHTML = '❌ التنبيهات غير مسموحة';
+            const statusEl = document.getElementById('notif-status');
+            const log = [];
+            const setStatus = (html) => { if (statusEl) statusEl.innerHTML = html; };
+            
+            // أداة تشخيص خطوة بخطوة - تكشف أين تتوقف التنبيهات
+            // Step-by-step diagnostic - reveals where notifications stop
+            
+            // 1. هل المتصفح يدعم التنبيهات؟ / Does browser support notifications?
+            if (!('Notification' in window)) {
+                setStatus('<div style="padding:12px;background:rgba(255,82,82,0.1);border-radius:8px;color:var(--red);font-size:12px;line-height:1.8;">❌ <b>متصفحك لا يدعم التنبيهات</b><br>Your browser does not support notifications<br><br>💡 جرّب Chrome على أندرويد / Try Chrome on Android</div>');
+                return;
+            }
+            log.push('✅ المتصفح يدعم التنبيهات / Browser supports notifications');
+            
+            // 2. هل نحن على HTTPS؟ / Are we on HTTPS?
+            if (location.protocol !== 'https:') {
+                setStatus('<div style="padding:12px;background:rgba(255,82,82,0.1);border-radius:8px;color:var(--red);font-size:12px;line-height:1.8;">❌ <b>التطبيق ليس على HTTPS</b><br>App is not on HTTPS<br><br>الرابط الحالي / Current: ' + location.protocol + '<br><br>💡 افتح التطبيق من رابط GitHub، لا من ملف محلي<br>Open from GitHub link, not local file</div>');
+                return;
+            }
+            log.push('✅ HTTPS مفعّل / HTTPS active');
+            
+            // 3. حالة الإذن الحالية / Current permission state
+            let perm = Notification.permission;
+            log.push('ℹ️ حالة الإذن / Permission: <b>' + perm + '</b>');
+            
+            if (perm === 'denied') {
+                setStatus('<div style="padding:12px;background:rgba(255,82,82,0.1);border-radius:8px;color:var(--red);font-size:12px;line-height:1.9;">❌ <b>الإذن مرفوض في إعدادات المتصفح</b><br>Permission blocked in browser settings<br><br><b>الحل / Fix:</b><br>📱 اضغط على القفل 🔒 بجانب الرابط أعلى المتصفح<br>Tap the lock 🔒 next to the URL<br><br>← الإشعارات / Notifications ← اسمح / Allow<br><br>ثم أعد المحاولة / Then try again</div>');
                 return;
             }
             
-            await registerServiceWorker();
-            const reg = await navigator.serviceWorker.ready;
+            // 4. اطلب الإذن إن لم يُمنح / Request permission if not granted
+            if (perm !== 'granted') {
+                setStatus('<div style="padding:12px;background:rgba(0,212,255,0.1);border-radius:8px;color:var(--cyan);font-size:12px;">⏳ جاري طلب الإذن... اضغط "السماح"<br>Requesting permission... tap "Allow"</div>');
+                try {
+                    perm = await Notification.requestPermission();
+                } catch (e) {
+                    setStatus('<div style="padding:12px;background:rgba(255,82,82,0.1);border-radius:8px;color:var(--red);font-size:12px;">❌ فشل طلب الإذن / Permission request failed<br>' + e.message + '</div>');
+                    return;
+                }
+                if (perm !== 'granted') {
+                    setStatus('<div style="padding:12px;background:rgba(255,159,67,0.1);border-radius:8px;color:var(--orange);font-size:12px;line-height:1.8;">⚠️ <b>لم تسمح بالإذن</b> / Permission not granted<br><br>اضغط الزر مجدداً واختر "السماح"<br>Tap again and choose "Allow"</div>');
+                    return;
+                }
+            }
+            log.push('✅ الإذن ممنوح / Permission granted');
             
-            const dueCount = getDueCardsCount();
+            // 5. هل Service Worker مدعوم؟ / Is Service Worker supported?
+            let usedSW = false;
+            let swError = '';
+            if ('serviceWorker' in navigator) {
+                log.push('✅ Service Worker مدعوم / supported');
+                try {
+                    await registerServiceWorker();
+                    const reg = await Promise.race([
+                        navigator.serviceWorker.ready,
+                        new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 5000))
+                    ]);
+                    if (reg && reg.showNotification) {
+                        const dueCount = (typeof getDueCardsCount === 'function') ? getDueCardsCount() : 0;
+                        await reg.showNotification('🧪 اختبار / Test - SRS Pro', {
+                            body: 'إذا رأيت هذا، التنبيهات تعمل! ✅\nIf you see this, notifications work!',
+                            tag: 'srs-test',
+                            dir: 'rtl', lang: 'ar',
+                            requireInteraction: true,
+                            vibrate: [200, 100, 200]
+                        });
+                        usedSW = true;
+                        log.push('✅ أُرسل عبر Service Worker / Sent via SW');
+                    }
+                } catch (e) {
+                    swError = e.message;
+                    log.push('⚠️ فشل Service Worker / SW failed: ' + e.message);
+                }
+            } else {
+                log.push('⚠️ Service Worker غير مدعوم / not supported');
+            }
             
-            try {
-                if (reg && reg.showNotification) {
-                    await reg.showNotification('🧪 اختبار - إتقان SRS Pro', {
-                        body: dueCount > 0 ? `📚 لديك ${dueCount} بطاقة للمراجعة الآن` : '✨ كل بطاقاتك متقنة! تابع التقدم',
-                        tag: 'srs-test',
-                        dir: 'rtl', lang: 'ar',
-                        requireInteraction: false
-                    });
-                } else if ('Notification' in window) {
-                    new Notification('🧪 اختبار - إتقان SRS Pro', {
-                        body: dueCount > 0 ? `📚 لديك ${dueCount} بطاقة للمراجعة` : '✨ كل بطاقاتك متقنة',
+            // 6. خطة بديلة: تنبيه مباشر / Fallback: direct notification
+            if (!usedSW) {
+                try {
+                    new Notification('🧪 اختبار / Test - SRS Pro', {
+                        body: 'إذا رأيت هذا، التنبيهات تعمل! ✅\nIf you see this, notifications work!',
                         dir: 'rtl', lang: 'ar'
                     });
+                    log.push('✅ أُرسل تنبيه مباشر / Sent direct notification');
+                } catch (e) {
+                    // فشل كل شيء - المشكلة في الجهاز / Everything failed - device issue
+                    setStatus('<div style="padding:12px;background:rgba(255,82,82,0.1);border-radius:8px;color:var(--red);font-size:12px;line-height:1.9;">❌ <b>الجهاز يمنع التنبيهات</b><br>Device is blocking notifications<br><br><b>التشخيص / Diagnosis:</b><br>' + log.join('<br>') + '<br><br><b>الحل / Fix:</b><br>📱 إعدادات الجهاز ← التطبيقات ← Chrome ← الإشعارات ← فعّلها<br>Device Settings → Apps → Chrome → Notifications → Enable<br><br>📱 أوقف "توفير البطارية" لـ Chrome<br>Disable Battery Saver for Chrome</div>');
+                    return;
                 }
-                document.getElementById('notif-status').innerHTML = '✅ تم إرسال التنبيه - تحقق من شاشة جهازك';
-            } catch (e) {
-                document.getElementById('notif-status').innerHTML = '❌ فشل: ' + e.message;
             }
+            
+            // نجح! / Success!
+            setStatus('<div style="padding:12px;background:rgba(78,205,196,0.1);border:1px solid var(--green);border-radius:8px;color:var(--green);font-size:12px;line-height:1.9;">✅ <b>تم إرسال التنبيه!</b> / Notification sent!<br><br>📱 <b>تحقق الآن من أعلى شاشة جهازك</b><br>Check the top of your device screen now<br><br>إذا لم يظهر، المشكلة في إعدادات الجهاز ⬇️<br>If nothing appeared, it is a device setting issue:<br><br>📱 إعدادات الجهاز ← التطبيقات ← Chrome ← الإشعارات<br>Settings → Apps → Chrome → Notifications → Enable</div>');
         }
         
         // تشغيل التطبيق
