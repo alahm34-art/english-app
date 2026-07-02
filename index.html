@@ -2901,6 +2901,36 @@
         </div>
 
         
+        <!-- 📊 قسم: التقدم والتصدير (قياس + PDF) -->
+        <div style="background: linear-gradient(135deg, rgba(78,205,196,0.08), rgba(255,159,67,0.08)); border: 1px solid rgba(78,205,196,0.3); border-radius: 14px; margin-bottom: 14px; overflow: hidden;">
+            <div data-toggle="sec-progress" style="display: flex; align-items: center; gap: 12px; padding: 16px; cursor: pointer; min-height: 72px;">
+                <div style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--green), var(--orange)); flex-shrink: 0;">
+                    <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:white;stroke-width:2;fill:none;">
+                        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 15px; font-weight: 700; color: var(--text);">التقدم والتصدير</div>
+                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">قِس تقدّمك + اطبع المحتوى للمذاكرة</div>
+                </div>
+                <div data-arrow="sec-progress" style="color: var(--text-muted); font-size: 22px;">›</div>
+            </div>
+            <div id="sec-progress" style="display: none; padding: 16px; border-top: 1px solid var(--border); background: rgba(0,0,0,0.08);">
+                <button onclick="openProgressDashboard()" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--green), var(--cyan)); color:white; border:none; border-radius:12px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:10px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    📊 لوحة تقدّمي (بالأرقام)
+                </button>
+                <div style="font-size:10px; color:var(--text-muted); text-align:center; margin-bottom:14px;">
+                    الدليل الموضوعي أنك تتقدّم — كم كلمة أتقنت، توزيع المستويات، سلسلتك
+                </div>
+                <button onclick="openPdfExport()" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--orange), var(--gold)); color:white; border:none; border-radius:12px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:14px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    📄 تصدير PDF للمذاكرة
+                </button>
+                <div style="font-size:10px; color:var(--text-muted); text-align:center; margin-top:8px;">
+                    اطبع المنهج كاملاً واكتبه بيدك — حفظ أعمق · ترى الطريق قبل البدء
+                </div>
+            </div>
+        </div>
+        
         <!-- 🧭 القسم: المسار الذكي (الأولوية القصوى - مفتوح افتراضياً) -->
         <div style="background: linear-gradient(135deg, rgba(138,79,255,0.10), rgba(0,212,255,0.10)); border: 2px solid rgba(138,79,255,0.4); border-radius: 14px; margin-bottom: 14px; overflow: hidden;">
             <div data-toggle="sec-guided-path" style="display: flex; align-items: center; gap: 12px; padding: 16px; cursor: pointer; min-height: 72px;">
@@ -2920,6 +2950,69 @@
             </div>
             <div id="sec-guided-path" style="display: block; padding: 16px; border-top: 1px solid var(--border); background: rgba(0,0,0,0.08);">
                 <div id="guided-path-controls"></div>
+            </div>
+        </div>
+        
+        <!-- 📚 القسم: تحميل المناهج (المحتوى الجاهز) -->
+        <div style="background: linear-gradient(135deg, rgba(255,209,102,0.08), rgba(78,205,196,0.08)); border: 1px solid rgba(255,209,102,0.3); border-radius: 14px; margin-bottom: 14px; overflow: hidden;">
+            <div data-toggle="sec-curricula" style="display: flex; align-items: center; gap: 12px; padding: 16px; cursor: pointer; min-height: 72px;">
+                <div style="width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--gold), var(--green)); flex-shrink: 0;">
+                    <svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:white;stroke-width:2;fill:none;">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 15px; font-weight: 700; color: var(--text);">تحميل المناهج</div>
+                    <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px;">المحتوى الجاهز: كلمات أساسية، عائلتك، B1، الإتقان</div>
+                </div>
+                <div data-arrow="sec-curricula" style="color: var(--text-muted); font-size: 22px;">›</div>
+            </div>
+            <div id="sec-curricula" style="display: none; padding: 16px; border-top: 1px solid var(--border); background: rgba(0,0,0,0.08);">
+                <div style="font-size:11px; color:var(--text-muted); text-align:center; margin-bottom:14px; line-height:1.7;">
+                    💡 المسار الذكي يحمّل هذه تلقائياً. لكن يمكنك تحميل أي منهج يدوياً من هنا.
+                </div>
+                
+                <!-- زر اللغة كأداة (الأهم - ابدأ به) -->
+                <button onclick="openMagicBrowser()" style="width:100%; padding:13px; background:linear-gradient(135deg, var(--gold), var(--cyan)); color:white; border:none; border-radius:10px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:6px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    🗝️ اللغة كأداة (ابدأ التحدث اليوم)
+                </button>
+                <div style="font-size:10px; color:var(--gold); text-align:center; margin-bottom:14px;">⭐ الأسئلة السحرية · تجعلك تتعلّم ذاتياً (TEDx) · ابدأ بها</div>
+                
+                <!-- زر الكلمات الأساسية -->
+                <button onclick="openCoreVocabBrowser()" style="width:100%; padding:13px; background:linear-gradient(135deg, var(--green), var(--cyan)); color:white; border:none; border-radius:10px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:6px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    🎯 الكلمات الأساسية (قاعدة 20/80)
+                </button>
+                <div style="font-size:10px; color:var(--text-muted); text-align:center; margin-bottom:12px;">⭐ 49 كلمة الأكثر شيوعاً · ابدأ بها</div>
+                
+                <!-- زر القواعد -->
+                <button onclick="openGrammarBrowser()" style="width:100%; padding:13px; background:linear-gradient(135deg, var(--violet), var(--orange)); color:white; border:none; border-radius:10px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:6px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    📐 القواعد الأساسية (قاعدة 20/80)
+                </button>
+                <div style="font-size:10px; color:var(--text-muted); text-align:center; margin-bottom:12px;">🧱 22 قاعدة · الأزمنة وبناء الجملة · تغطي 80% من الكلام</div>
+                
+                <!-- زر أشهر الكلمات -->
+                <button onclick="openVocabBrowser()" style="width:100%; padding:13px; background:linear-gradient(135deg, var(--green), var(--violet)); color:white; border:none; border-radius:10px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:6px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    📚 أشهر الكلمات (أفعال وصفات وأسماء)
+                </button>
+                <div style="font-size:10px; color:var(--text-muted); text-align:center; margin-bottom:12px;">🎯 53 كلمة · 5 أمثلة لكل كلمة · محتوى لغوي غني</div>
+                
+                <!-- زر عائلتك الإنجليزية -->
+                <button onclick="openCurriculumBrowser()" style="width:100%; padding:13px; background:linear-gradient(135deg, var(--gold), var(--orange)); color:white; border:none; border-radius:10px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:6px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    🏡 عائلتك الإنجليزية (مواقف يومية)
+                </button>
+                <div style="font-size:10px; color:var(--text-muted); text-align:center; margin-bottom:12px;">🌅 56 جملة في سياقها الحقيقي</div>
+                
+                <!-- زر جسر B1 -->
+                <button onclick="openB1Browser()" style="width:100%; padding:13px; background:linear-gradient(135deg, var(--violet), var(--cyan)); color:white; border:none; border-radius:10px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:6px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    🌉 جسر B1 (للجامعة والرسالة)
+                </button>
+                <div style="font-size:10px; color:var(--text-muted); text-align:center; margin-bottom:12px;">🎓 85 كتلة · عربي يتلاشى أسبوعياً</div>
+                
+                <!-- زر طريق الإتقان -->
+                <button onclick="openMasteryBrowser()" style="width:100%; padding:13px; background:linear-gradient(135deg, var(--orange), var(--gold)); color:white; border:none; border-radius:10px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:6px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    🎓 طريق الإتقان B1→C1 (للمستقبل)
+                </button>
+                <div style="font-size:10px; color:var(--text-muted); text-align:center;">👑 62 كتلة · كأنك درست بالخارج</div>
             </div>
         </div>
         
@@ -3110,8 +3203,8 @@
             <div class="cr-badge">Ahmed SRS Pro © 2026 — All Rights Reserved</div>
             <!-- ✅ رقم النسخة + زر تحديث إجباري (يحسم مشكلة الكاش) -->
             <div style="margin-top:14px; padding:12px; background:rgba(0,212,255,0.06); border:1px solid rgba(0,212,255,0.2); border-radius:10px;">
-                <div style="font-size:13px; font-weight:700; color:var(--cyan); margin-bottom:4px;">النسخة / Version: <span style="font-family:monospace;">v62</span></div>
-                <div style="font-size:10px; color:var(--text-muted); margin-bottom:10px;">لو رأيت v62 فأنت على آخر نسخة / If you see v62, you have the latest</div>
+                <div style="font-size:13px; font-weight:700; color:var(--cyan); margin-bottom:4px;">النسخة / Version: <span style="font-family:monospace;">v72</span></div>
+                <div style="font-size:10px; color:var(--text-muted); margin-bottom:10px;">لو رأيت v72 فأنت على آخر نسخة / If you see v72, you have the latest</div>
                 <button onclick="forceUpdate()" style="width:100%; padding:12px; background:linear-gradient(135deg, var(--orange), var(--red)); color:white; border:none; border-radius:8px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px;">
                     🔄 تحديث إجباري + مسح الكاش / Force Update
                 </button>
@@ -3236,6 +3329,18 @@
 
         const INTERVALS = [0, 1, 3, 7, 14, 30, 60, 90];
         let words = [], categories = [], currentIdx = -1, timer, timeLeft = 100, freeLearning = false, currentCategory = 'All';
+        
+        // ✅ تعريف مبكر للمسار الذكي (يمنع خطأ: Cannot access 'guidedPath' before initialization)
+        // Early declaration prevents Temporal Dead Zone error during init()
+        let GUIDED_PATH_MAP = [];
+        let guidedPath = {
+            active: false,
+            startedAt: null,
+            currentStep: 0,
+            completedSteps: [],
+            lastStudyDate: null,
+            streakDays: 0
+        };
         // ✨ تاريخ البطاقات للرجوع
         let cardHistory = [];  // مكدّس من indexes البطاقات السابقة
         let quizList = [], quizCurrentQ = 0, quizScore = 0;
@@ -7888,7 +7993,15 @@
                         </button>
                         
                         <!-- ✨ زر المنهج المتكامل -->
-                        <button onclick="openCurriculumBrowser()" style="width:100%; padding:13px; background:linear-gradient(135deg, var(--gold), var(--orange)); color:white; border:none; border-radius:10px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-top:10px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                        <!-- 🎯 زر الكلمات الأساسية (قاعدة 20/80) -->
+                        <button onclick="openCoreVocabBrowser()" style="width:100%; padding:13px; background:linear-gradient(135deg, var(--green), var(--cyan)); color:white; border:none; border-radius:10px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-top:10px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                            🎯 الكلمات الأساسية (قاعدة 20/80)
+                        </button>
+                        <div style="font-size:10px; color:var(--text-muted); text-align:center; margin-top:6px;">
+                            ⭐ 49 كلمة الأكثر شيوعاً · تغطي معظم الكلام اليومي · ابدأ بها
+                        </div>
+                        
+                        <button onclick="openCurriculumBrowser()" style="width:100%; padding:13px; background:linear-gradient(135deg, var(--gold), var(--orange)); color:white; border:none; border-radius:10px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-top:12px; display:flex; align-items:center; justify-content:center; gap:8px;">
                             <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:white;stroke-width:2;fill:none;">
                                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                                 <polyline points="9 22 9 12 15 12 15 22"/>
@@ -7904,6 +8017,14 @@
                         </button>
                         <div style="font-size:10px; color:var(--text-muted); text-align:center; margin-top:6px;">
                             🎓 85 كتلة جاهزة · عربي يتلاشى أسبوعياً · لغة أكاديمية لمناقشة الرسالة
+                        </div>
+                        
+                        <!-- 🎓 زر منهج الإتقان (المستقبل B1→C1) -->
+                        <button onclick="openMasteryBrowser()" style="width:100%; padding:13px; background:linear-gradient(135deg, var(--gold), var(--orange)); color:white; border:none; border-radius:10px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-top:12px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                            🎓 طريق الإتقان B1→C1 (للمستقبل)
+                        </button>
+                        <div style="font-size:10px; color:var(--text-muted); text-align:center; margin-top:6px;">
+                            👑 62 كتلة · تعبيرات طبيعية + اصطلاحات + لغة C1 · كأنك درست بالخارج
                         </div>
                     </div>
                 `;
@@ -7948,9 +8069,10 @@
                         </div>
                         
                         <!-- زر تثبيت الكل -->
-                        <button onclick="installFullCurriculum(); document.getElementById('curriculum-modal').remove();" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--green), var(--cyan)); color:white; border:none; border-radius:12px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:16px;">
+                        <button onclick="installFullCurriculum(); document.getElementById('curriculum-modal').remove();" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--green), var(--cyan)); color:white; border:none; border-radius:12px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:8px;">
                             ⬇️ ثبّت المنهج كاملاً (56 جملة)
                         </button>
+                        <button onclick="printFullCurriculum('ENGLISH_FAMILY_CURRICULUM')" style="width:100%; padding:13px; background:rgba(0,212,255,0.10); color:var(--cyan); border:1px solid var(--cyan); border-radius:12px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:12px;">🖨️ طباعة المنهج كاملاً (بلا تثبيت)</button>
                         
                         <div style="font-size:12px; color:var(--text-muted); text-align:center; margin-bottom:12px;">— أو ثبّت وحدة محددة —</div>
                         
@@ -7969,10 +8091,13 @@
                                             <span style="padding:3px 8px; background:rgba(0,212,255,0.15); color:var(--cyan); border-radius:8px; font-size:10px; font-weight:700;">${unit.cards.length} جملة</span>
                                         </div>
                                         <div style="font-size:11px; color:var(--text-muted); line-height:1.6; margin-bottom:10px;">📍 ${escapeHtml(unit.scene)}</div>
+                                        <div style="display:flex; gap:6px;">
                                         <button onclick="(function(){ const r = installCurriculumUnit('${key}'); showToast('✅ تم تثبيت ' + r.added + ' جملة'); openCurriculumBrowser(); })()" 
-                                            style="width:100%; padding:10px; background:${isInstalled ? 'rgba(78,205,196,0.10)' : 'linear-gradient(135deg, var(--violet), var(--cyan))'}; color:${isInstalled ? 'var(--green)' : 'white'}; border:${isInstalled ? '1px solid var(--green)' : 'none'}; border-radius:8px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:12px;">
+                                            style="flex:1; padding:10px; background:${isInstalled ? 'rgba(78,205,196,0.10)' : 'linear-gradient(135deg, var(--violet), var(--cyan))'}; color:${isInstalled ? 'var(--green)' : 'white'}; border:${isInstalled ? '1px solid var(--green)' : 'none'}; border-radius:8px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:12px;">
                                             ${isInstalled ? '✓ مُثبّتة - أعد التثبيت' : '⬇️ ثبّت هذه الوحدة'}
                                         </button>
+                                        <button onclick="printOneUnit('ENGLISH_FAMILY_CURRICULUM', '${key}')" style="padding:10px 14px; background:rgba(0,212,255,0.12); color:var(--cyan); border:1px solid var(--cyan); border-radius:8px; font-family:'Cairo'; font-weight:700; cursor:pointer; font-size:12px; white-space:nowrap;">🖨️ طباعة</button>
+                                        </div>
                                     </div>
                                 `;
                             }).join('')}
@@ -11827,8 +11952,11 @@ STRICT Rules:
                         + '<span style="padding:3px 8px; background:rgba(0,212,255,0.15); color:var(--cyan); border-radius:8px; font-size:10px; font-weight:700;">' + unit.cards.length + ' كتلة</span>'
                         + '</div>'
                         + '<div style="font-size:11px; color:var(--text-muted); line-height:1.6; margin-bottom:10px;">📍 ' + escapeHtml(unit.description) + '</div>'
-                        + '<button onclick="b1InstallUnit(\'' + key + '\')" style="width:100%; padding:10px; background:' + btnBg + '; color:' + btnColor + '; border:' + btnBorder + '; border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px;">'
-                        + btnText + '</button></div>';
+                        + '<div style="display:flex; gap:6px;">'
+                        + '<button onclick="b1InstallUnit(\'' + key + '\')" style="flex:1; padding:10px; background:' + btnBg + '; color:' + btnColor + '; border:' + btnBorder + '; border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px;">'
+                        + btnText + '</button>'
+                        + '<button onclick="printOneUnit(\'B1_BRIDGE_CURRICULUM\', \'' + key + '\')" style="padding:10px 14px; background:rgba(0,212,255,0.12); color:var(--cyan); border:1px solid var(--cyan); border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px; white-space:nowrap;">🖨️ طباعة</button>'
+                        + '</div></div>';
                 });
                 phasesHtml += '<div style="margin-bottom:18px;">'
                     + '<div style="font-size:12px; font-weight:700; color:var(--gold); margin-bottom:10px; padding:6px 12px; background:rgba(255,209,102,0.08); border-radius:8px; display:inline-block;">📅 ' + escapeHtml(phaseName) + '</div>'
@@ -11849,7 +11977,8 @@ STRICT Rules:
                 + '📉 <b>العربية تقل أسبوعياً:</b> 70% ← 40% ← 15% ← 5%<br>'
                 + '🌊 <b>الهدف:</b> تدفّق بلا ترجمة + لغة أكاديمية للرسالة<br>'
                 + '🎯 <b>' + totalCards + ' كتلة</b> · 8 وحدات · وحدة لكل أسبوعين</div></div>'
-                + '<button onclick="b1InstallAll()" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--green), var(--cyan)); color:white; border:none; border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:16px;">⬇️ ثبّت المنهج كاملاً (' + totalCards + ' كتلة)</button>'
+                + '<button onclick="b1InstallAll()" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--green), var(--cyan)); color:white; border:none; border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:8px;">⬇️ ثبّت المنهج كاملاً (' + totalCards + ' كتلة)</button>'
+                + '<button onclick="printFullCurriculum(\'B1_BRIDGE_CURRICULUM\')" style="width:100%; padding:13px; background:rgba(0,212,255,0.10); color:var(--cyan); border:1px solid var(--cyan); border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:16px;">🖨️ طباعة المنهج كاملاً (بلا تثبيت)</button>'
                 + '<div style="font-size:11px; color:var(--orange); text-align:center; margin-bottom:16px; padding:8px; background:rgba(255,159,67,0.06); border-radius:8px;">💡 نصيحة مدرّبك: ابدأ بوحدة واحدة. أتقنها قبل الانتقال للتالية.</div>'
                 + phasesHtml
                 + '</div>'
@@ -11882,7 +12011,8 @@ STRICT Rules:
         // ═══════════════════════════════════════════════════════════════
 
         // خريطة المسار الكاملة: الإحماء (عائلة) ثم جسر B1 بالترتيب
-        const GUIDED_PATH_MAP = [
+        // ملاحظة: GUIDED_PATH_MAP معرّف مبكراً أعلى الكود - هنا نملؤه فقط
+        GUIDED_PATH_MAP = [
             // ── الإحماء: وحدتان من العائلة (تسخين الفم) ──
             { stage: 'warmup', curriculum: 'family', unitKey: 'unit1', days: [1, 3], emoji: '🌅', title: 'الصباح مع العائلة', phaseLabel: 'إحماء · جمل المواقف' },
             { stage: 'warmup', curriculum: 'family', unitKey: 'unit6', days: [4, 5], emoji: '💬', title: 'المحادثة الاجتماعية', phaseLabel: 'إحماء · جمل المواقف' },
@@ -11894,19 +12024,17 @@ STRICT Rules:
             { stage: 'bridge', curriculum: 'b1', unitKey: 'w5_defense', days: [34, 40], emoji: '🛡️', title: 'Defending Your Thesis', phaseLabel: 'أسبوع 5-6 · عربي 15%' },
             { stage: 'bridge', curriculum: 'b1', unitKey: 'w6_fluency', days: [41, 47], emoji: '🌊', title: 'Sounding Natural', phaseLabel: 'أسبوع 5-6 · عربي 15%' },
             { stage: 'bridge', curriculum: 'b1', unitKey: 'w7_research', days: [48, 54], emoji: '🔬', title: 'Research Vocabulary', phaseLabel: 'أسبوع 7-8 · عربي 5%' },
-            { stage: 'bridge', curriculum: 'b1', unitKey: 'w8_mastery', days: [55, 60], emoji: '👑', title: 'Discussion Mastery', phaseLabel: 'أسبوع 7-8 · عربي 5%' }
+            { stage: 'bridge', curriculum: 'b1', unitKey: 'w8_mastery', days: [55, 60], emoji: '👑', title: 'Discussion Mastery', phaseLabel: 'أسبوع 7-8 · عربي 5%' },
+            // ── طريق الإتقان: المستقبل B1→C1 (كأنك درست بالخارج) ──
+            { stage: 'mastery', curriculum: 'mastery', unitKey: 'm1_verb_collocations', days: [61, 67], emoji: '🔗', title: 'Natural Verb Combos', phaseLabel: 'الإتقان · تعبيرات طبيعية' },
+            { stage: 'mastery', curriculum: 'mastery', unitKey: 'm2_adjective_collocations', days: [68, 74], emoji: '🎨', title: 'Precise Descriptions', phaseLabel: 'الإتقان · تعبيرات طبيعية' },
+            { stage: 'mastery', curriculum: 'mastery', unitKey: 'm3_daily_idioms', days: [75, 81], emoji: '💬', title: 'Native Expressions', phaseLabel: 'الإتقان · طلاقة حقيقية' },
+            { stage: 'mastery', curriculum: 'mastery', unitKey: 'm4_academic_idioms', days: [82, 88], emoji: '🎓', title: 'Scholarly Phrasing', phaseLabel: 'الإتقان · طلاقة حقيقية' },
+            { stage: 'mastery', curriculum: 'mastery', unitKey: 'm5_academic_verbs', days: [89, 95], emoji: '⚡', title: 'Power Verbs', phaseLabel: 'الإتقان · مستوى الباحث' },
+            { stage: 'mastery', curriculum: 'mastery', unitKey: 'm6_hedging_precision', days: [96, 102], emoji: '🎯', title: 'Academic Caution', phaseLabel: 'الإتقان · مستوى الباحث' }
         ];
 
-        // حالة المسار الذكي (منفصلة عن aiTutor الأصلي)
-        let guidedPath = {
-            active: false,
-            startedAt: null,
-            currentStep: 0,        // مؤشر في GUIDED_PATH_MAP
-            completedSteps: [],    // مفاتيح الوحدات المُتقنة
-            lastStudyDate: null,
-            streakDays: 0
-        };
-
+        // حالة المسار الذكي معرّفة مبكراً أعلى الكود - هنا نسترجع المحفوظ فقط
         // استرجاع الحالة المحفوظة
         try {
             const saved = localStorage.getItem('ahmed_guided_path');
@@ -11935,6 +12063,9 @@ STRICT Rules:
             }
             if (step.curriculum === 'b1' && typeof installB1Unit === 'function') {
                 return installB1Unit(step.unitKey);
+            }
+            if (step.curriculum === 'mastery' && typeof installMasteryUnit === 'function') {
+                return installMasteryUnit(step.unitKey);
             }
             return { added: 0 };
         }
@@ -12473,6 +12604,1755 @@ STRICT Rules:
                 showToast('حدث خطأ - حاول مرة أخرى / Error - try again');
                 console.error('Force update failed:', e);
             }
+        }
+
+
+
+        // ═══════════════════════════════════════════════════════════════
+        // 🎓 منهج المستقبل: "طريق الإتقان" (Mastery Path) B1 → C1
+        // ═══════════════════════════════════════════════════════════════
+        // الهدف: لغة من عاش في الخارج - شيوع + طبيعية + عمق أكاديمي
+        // مبني على: قاعدة 20/80 (Zipf), التعبيرات الطبيعية (Collocations),
+        //          الاصطلاحات (Idioms), اللغة الأكاديمية (Academic Word List)
+        // كل المحتوى بالإنجليزية (عربي 0%) - أنت تجاوزت السقالة
+        // ═══════════════════════════════════════════════════════════════
+        const MASTERY_CURRICULUM = {
+            // ───────── المرحلة 1: التعبيرات الطبيعية (Collocations) ─────────
+            m1_verb_collocations: {
+                title: "Natural Verb Combos",
+                titleEn: "Verb Collocations",
+                emoji: "🔗",
+                level: "B2",
+                phase: "Phase 1 · Sound Native",
+                description: "The verb+noun pairs natives use automatically",
+                scene: "Speaking naturally without translating",
+                cards: [
+                    { term: "make a decision", ar: "(not: do a decision)", awbw: "make + decision = the natural pair", ex: ["I need to make a decision soon", "We made the right decision", "It's hard to make decisions under pressure"], tip: "Natives say MAKE not DO - this marks fluency", scene: "💭 Choosing between options" },
+                    { term: "take responsibility", ar: "(not: get responsibility)", awbw: "take + responsibility = ownership", ex: ["You must take responsibility for this", "She took full responsibility", "I take responsibility for my mistakes"], tip: "TAKE pairs with responsibility, action, risk", scene: "🎯 Owning your actions" },
+                    { term: "pay attention", ar: "(not: give attention)", awbw: "pay + attention = focus", ex: ["Pay attention to the details", "He doesn't pay attention", "Pay close attention here"], tip: "You PAY attention, not give it", scene: "👀 Focusing on something" },
+                    { term: "draw a conclusion", ar: "(not: make a conclusion)", awbw: "draw + conclusion = academic", ex: ["We can draw a clear conclusion", "Don't draw conclusions too early", "The data lets us draw conclusions"], tip: "DRAW conclusions - essential academic phrase", scene: "🔬 Reaching findings" },
+                    { term: "raise a question", ar: "(not: make a question)", awbw: "raise + question = bring up", ex: ["This raises an important question", "Let me raise a question", "Your point raises questions"], tip: "RAISE questions, concerns, issues - academic gold", scene: "❓ Bringing up a point" },
+                    { term: "meet a deadline", ar: "(not: catch a deadline)", awbw: "meet + deadline = achieve on time", ex: ["We need to meet the deadline", "I always meet my deadlines", "Can you meet this deadline"], tip: "MEET deadlines, requirements, standards", scene: "⏰ Finishing on time" },
+                    { term: "conduct research", ar: "(not: make research)", awbw: "conduct + research = formal", ex: ["We conducted extensive research", "The team conducts research", "I'm conducting research on this"], tip: "CONDUCT research - never 'make research'", scene: "🔬 Doing a study" },
+                    { term: "reach an agreement", ar: "(not: find an agreement)", awbw: "reach + agreement = arrive at", ex: ["They reached an agreement", "We hope to reach an agreement", "Reaching agreement took time"], tip: "REACH agreements, consensus, a decision", scene: "🤝 Settling a deal" },
+                    { term: "play a role", ar: "(not: do a role)", awbw: "play + role = function", ex: ["This plays a key role", "She plays an important role", "Genes play a major role"], tip: "PLAY a role - vital for academic writing", scene: "🎭 Having influence" },
+                    { term: "pose a threat", ar: "(not: give a threat)", awbw: "pose + threat = present danger", ex: ["This poses a serious threat", "It poses no threat", "The risk poses challenges"], tip: "POSE threats, risks, challenges, questions", scene: "⚠️ Presenting danger" },
+                    { term: "gain insight", ar: "(not: take insight)", awbw: "gain + insight = acquire understanding", ex: ["We gained valuable insight", "This gives deep insight", "To gain insight into the problem"], tip: "GAIN insight, knowledge, experience - academic", scene: "💡 Understanding deeply" },
+                    { term: "address an issue", ar: "(not: solve directly)", awbw: "address + issue = deal with", ex: ["We must address this issue", "Let me address your concern", "The study addresses key issues"], tip: "ADDRESS issues, concerns, problems - formal", scene: "🎯 Tackling a problem" }
+                ]
+            },
+            m2_adjective_collocations: {
+                title: "Precise Descriptions",
+                titleEn: "Adjective Collocations",
+                emoji: "🎨",
+                level: "B2",
+                phase: "Phase 1 · Sound Native",
+                description: "The exact adjectives natives pair with nouns",
+                scene: "Describing things precisely like a native",
+                cards: [
+                    { term: "a significant difference", ar: "(strong, measurable)", awbw: "significant = important + measurable", ex: ["There's a significant difference", "We found significant results", "A significant improvement"], tip: "SIGNIFICANT - the academic word for important", scene: "📊 Showing real contrast" },
+                    { term: "a compelling argument", ar: "(convincing, strong)", awbw: "compelling = forcefully convincing", ex: ["She made a compelling argument", "A compelling case for change", "His reasoning is compelling"], tip: "COMPELLING - upgrades 'good argument'", scene: "🎤 Making a strong case" },
+                    { term: "a profound impact", ar: "(deep, far-reaching)", awbw: "profound = deeply significant", ex: ["It had a profound impact", "A profound effect on society", "Profound implications"], tip: "PROFOUND - deeper than 'big impact'", scene: "🌊 Deep influence" },
+                    { term: "a viable option", ar: "(workable, realistic)", awbw: "viable = capable of working", ex: ["This is a viable option", "A viable alternative", "Is this viable"], tip: "VIABLE - smarter than 'possible'", scene: "✅ A realistic choice" },
+                    { term: "robust evidence", ar: "(strong, reliable)", awbw: "robust = strong + reliable", ex: ["We have robust evidence", "A robust methodology", "Robust findings"], tip: "ROBUST - essential for research defense", scene: "🔬 Solid proof" },
+                    { term: "a subtle distinction", ar: "(fine, delicate)", awbw: "subtle = not obvious", ex: ["There's a subtle distinction", "A subtle difference", "Subtle changes"], tip: "SUBTLE - shows sophisticated thinking", scene: "🔍 Fine difference" },
+                    { term: "a coherent argument", ar: "(logical, connected)", awbw: "coherent = logically consistent", ex: ["Build a coherent argument", "A coherent structure", "Your essay is coherent"], tip: "COHERENT - key for academic writing", scene: "📝 Logically connected" },
+                    { term: "an inherent flaw", ar: "(built-in, essential)", awbw: "inherent = naturally part of", ex: ["An inherent flaw in the design", "Inherent limitations", "Inherent risks"], tip: "INHERENT - shows deep analysis", scene: "⚙️ Built-in problem" },
+                    { term: "ambiguous results", ar: "(unclear, open)", awbw: "ambiguous = open to interpretation", ex: ["The results were ambiguous", "An ambiguous statement", "This is ambiguous"], tip: "AMBIGUOUS - precise academic term", scene: "❓ Unclear outcome" },
+                    { term: "a plausible explanation", ar: "(believable, reasonable)", awbw: "plausible = seeming reasonable", ex: ["A plausible explanation", "This seems plausible", "A plausible hypothesis"], tip: "PLAUSIBLE - academic 'believable'", scene: "💡 Reasonable theory" }
+                ]
+            },
+            // ───────── المرحلة 2: الاصطلاحات الطبيعية (Idioms) ─────────
+            m3_daily_idioms: {
+                title: "Native Expressions",
+                titleEn: "Everyday Idioms",
+                emoji: "💬",
+                level: "B2",
+                phase: "Phase 2 · Real Fluency",
+                description: "Idioms that make you sound like you lived abroad",
+                scene: "Casual conversation with native speakers",
+                cards: [
+                    { term: "to be on the same page", ar: "(in agreement)", awbw: "idiom: sharing understanding", ex: ["Let's make sure we're on the same page", "Are we on the same page", "We're on the same page now"], tip: "Means agreement - very common in meetings", scene: "🤝 Confirming you agree" },
+                    { term: "to wrap my head around", ar: "(to fully understand)", awbw: "idiom: grasp something hard", ex: ["I can't wrap my head around this", "Hard to wrap my head around", "Let me wrap my head around it"], tip: "For grasping difficult concepts - sounds native", scene: "🤔 Struggling to understand" },
+                    { term: "to cut to the chase", ar: "(get to the point)", awbw: "idiom: skip the details", ex: ["Let me cut to the chase", "Cutting to the chase", "To cut to the chase, we failed"], tip: "Means get to the point quickly", scene: "🎯 Being direct" },
+                    { term: "a ballpark figure", ar: "(rough estimate)", awbw: "idiom: approximate number", ex: ["Give me a ballpark figure", "Just a ballpark estimate", "In the ballpark of 50"], tip: "Common in academic/work discussions", scene: "📊 Rough estimate" },
+                    { term: "to think outside the box", ar: "(creatively)", awbw: "idiom: creative thinking", ex: ["We need to think outside the box", "Thinking outside the box", "She thinks outside the box"], tip: "Means creative/innovative thinking", scene: "💡 Being creative" },
+                    { term: "to touch base", ar: "(check in briefly)", awbw: "idiom: brief contact", ex: ["Let's touch base next week", "I'll touch base with you", "Just touching base"], tip: "Professional way to say 'check in'", scene: "📞 Quick check-in" },
+                    { term: "the bottom line", ar: "(the key point)", awbw: "idiom: most important point", ex: ["The bottom line is, it works", "Here's the bottom line", "Bottom line: we need more data"], tip: "States the essential conclusion", scene: "🎯 The main point" },
+                    { term: "to play devil's advocate", ar: "(argue the opposite)", awbw: "idiom: challenge for discussion", ex: ["Let me play devil's advocate", "Playing devil's advocate here", "Just playing devil's advocate"], tip: "Academic gold - challenge an idea to test it", scene: "🎭 Testing an argument" },
+                    { term: "to be a game changer", ar: "(transformative)", awbw: "idiom: changes everything", ex: ["This could be a game changer", "A real game changer", "It's a game changer"], tip: "Something that transforms the situation", scene: "🚀 Major breakthrough" },
+                    { term: "to get the ball rolling", ar: "(to start)", awbw: "idiom: begin a process", ex: ["Let's get the ball rolling", "Getting the ball rolling", "To get the ball rolling, I'll start"], tip: "Means to start something", scene: "▶️ Starting up" }
+                ]
+            },
+            m4_academic_idioms: {
+                title: "Scholarly Phrasing",
+                titleEn: "Academic Expressions",
+                emoji: "🎓",
+                level: "C1",
+                phase: "Phase 2 · Real Fluency",
+                description: "Sophisticated phrases for academic settings",
+                scene: "Conferences, papers, scholarly discussion",
+                cards: [
+                    { term: "by and large", ar: "(generally speaking)", awbw: "phrase: in general", ex: ["By and large, the results agree", "By and large, this holds true", "The findings, by and large, support it"], tip: "Sophisticated 'generally' - native marker", scene: "📊 Stating general truth" },
+                    { term: "with respect to", ar: "(regarding)", awbw: "phrase: concerning", ex: ["With respect to the data", "With respect to your point", "With respect to methodology"], tip: "Formal 'about' - essential academic phrase", scene: "🎯 Referring to a topic" },
+                    { term: "in light of", ar: "(considering)", awbw: "phrase: given this", ex: ["In light of these findings", "In light of recent evidence", "In light of this, we revised it"], tip: "Sophisticated 'because of' - shows reasoning", scene: "💡 Given new information" },
+                    { term: "a case in point", ar: "(a clear example)", awbw: "phrase: relevant example", ex: ["A case in point is this study", "This is a case in point", "Climate change is a case in point"], tip: "Elegant way to introduce an example", scene: "📌 Giving an example" },
+                    { term: "to shed light on", ar: "(to clarify)", awbw: "phrase: illuminate", ex: ["This sheds light on the issue", "Our study sheds light on", "To shed light on the matter"], tip: "Academic 'to explain/clarify'", scene: "🔦 Clarifying something" },
+                    { term: "to call into question", ar: "(to challenge)", awbw: "phrase: cast doubt", ex: ["This calls into question the theory", "Calling into question the results", "It calls assumptions into question"], tip: "Sophisticated way to challenge - C1 level", scene: "❓ Challenging a claim" },
+                    { term: "a paradigm shift", ar: "(fundamental change)", awbw: "phrase: model change", ex: ["This represents a paradigm shift", "A paradigm shift in thinking", "We're seeing a paradigm shift"], tip: "High-level academic - fundamental change", scene: "🔄 Major framework change" },
+                    { term: "to bridge the gap", ar: "(to connect)", awbw: "phrase: close a divide", ex: ["This bridges the gap between theory and practice", "To bridge the gap", "Bridging the research gap"], tip: "Connecting two separate things - thesis gold", scene: "🌉 Connecting areas" },
+                    { term: "to lay the groundwork", ar: "(to prepare foundation)", awbw: "phrase: establish basis", ex: ["This lays the groundwork for future research", "Laying the groundwork", "To lay the groundwork for change"], tip: "Establishing a foundation - sophisticated", scene: "🏗️ Building foundation" },
+                    { term: "to take into account", ar: "(to consider)", awbw: "phrase: factor in", ex: ["We must take this into account", "Taking into account all factors", "To take into account the limitations"], tip: "Formal 'consider' - essential academic", scene: "🧩 Considering factors" }
+                ]
+            },
+            // ───────── المرحلة 3: اللغة الأكاديمية المتقدمة (C1) ─────────
+            m5_academic_verbs: {
+                title: "Power Verbs",
+                titleEn: "Academic Verbs",
+                emoji: "⚡",
+                level: "C1",
+                phase: "Phase 3 · Scholar Level",
+                description: "High-impact verbs for papers and presentations",
+                scene: "Writing your thesis, presenting research",
+                cards: [
+                    { term: "to demonstrate", ar: "(to show clearly)", awbw: "upgrade of: show", ex: ["The results demonstrate a clear link", "This demonstrates the effect", "We demonstrate that X causes Y"], tip: "Stronger than 'show' - proves with evidence", scene: "🔬 Proving with data" },
+                    { term: "to illustrate", ar: "(to show by example)", awbw: "upgrade of: give example", ex: ["Figure 1 illustrates the process", "To illustrate this point", "This example illustrates"], tip: "Show through examples/figures", scene: "📊 Showing via example" },
+                    { term: "to underscore", ar: "(to emphasize)", awbw: "upgrade of: stress", ex: ["This underscores the importance", "The data underscores our point", "To underscore this finding"], tip: "Elegant 'emphasize' - C1 marker", scene: "⭐ Emphasizing strongly" },
+                    { term: "to attribute to", ar: "(to credit/explain by)", awbw: "X is attributed to Y", ex: ["We attribute this to the method", "This is attributed to chance", "Attributing the result to X"], tip: "Explaining cause academically", scene: "🔗 Explaining causes" },
+                    { term: "to substantiate", ar: "(to prove/support)", awbw: "upgrade of: support with evidence", ex: ["The data substantiates our claim", "To substantiate this hypothesis", "Substantiated by evidence"], tip: "High-level 'prove with evidence'", scene: "📋 Backing up claims" },
+                    { term: "to elucidate", ar: "(to make clear)", awbw: "upgrade of: explain clearly", ex: ["This elucidates the mechanism", "To elucidate the process", "The study elucidates"], tip: "Sophisticated 'clarify' - impresses examiners", scene: "💡 Making clear" },
+                    { term: "to corroborate", ar: "(to confirm/support)", awbw: "upgrade of: confirm", ex: ["These findings corroborate prior work", "To corroborate the results", "Corroborated by other studies"], tip: "Confirm through additional evidence", scene: "✅ Confirming findings" },
+                    { term: "to delineate", ar: "(to describe precisely)", awbw: "upgrade of: outline", ex: ["We delineate the boundaries", "To delineate the scope", "Clearly delineated"], tip: "Precisely define/outline - C1 level", scene: "📐 Defining precisely" },
+                    { term: "to extrapolate", ar: "(to extend/infer)", awbw: "extend findings beyond data", ex: ["We can extrapolate from this", "Extrapolating the trend", "To extrapolate these results"], tip: "Extend findings to new situations", scene: "📈 Extending findings" },
+                    { term: "to reconcile", ar: "(to make consistent)", awbw: "make conflicting things agree", ex: ["How do we reconcile these results", "To reconcile the differences", "Reconciling theory with data"], tip: "Resolve contradictions - advanced thinking", scene: "⚖️ Resolving conflicts" }
+                ]
+            },
+            m6_hedging_precision: {
+                title: "Academic Caution",
+                titleEn: "Hedging & Precision",
+                emoji: "🎯",
+                level: "C1",
+                phase: "Phase 3 · Scholar Level",
+                description: "The careful language that marks a true scholar",
+                scene: "Making precise, defensible academic claims",
+                cards: [
+                    { term: "tends to suggest", ar: "(cautious claim)", awbw: "hedge: not absolute", ex: ["The evidence tends to suggest", "This tends to indicate", "Data tends to support this"], tip: "Scholars hedge - shows careful thinking", scene: "🔬 Careful claim" },
+                    { term: "it could be argued that", ar: "(presenting a view)", awbw: "hedge: one perspective", ex: ["It could be argued that X", "It could be argued differently", "One could argue that"], tip: "Presents a view without overcommitting", scene: "💭 Offering perspective" },
+                    { term: "to a certain extent", ar: "(partially)", awbw: "hedge: not fully", ex: ["This is true to a certain extent", "To a certain extent, yes", "It works to a certain extent"], tip: "Precise partial agreement - scholarly", scene: "⚖️ Partial truth" },
+                    { term: "with some caveats", ar: "(with qualifications)", awbw: "hedge: with conditions", ex: ["This holds, with some caveats", "With some important caveats", "True, with caveats"], tip: "Acknowledging limitations - mature", scene: "⚠️ Noting limits" },
+                    { term: "preliminary findings indicate", ar: "(early results)", awbw: "hedge: not final", ex: ["Preliminary findings indicate", "Our preliminary results suggest", "These preliminary data show"], tip: "Honest about research stage", scene: "🔬 Early results" },
+                    { term: "insofar as", ar: "(to the extent that)", awbw: "phrase: precise limiting", ex: ["This is valid insofar as", "Insofar as the data allows", "True insofar as it goes"], tip: "Precise academic limiting - C1 marker", scene: "📐 Defining limits" },
+                    { term: "notwithstanding", ar: "(despite)", awbw: "upgrade of: despite", ex: ["Notwithstanding these limits", "Notwithstanding the challenges", "This holds notwithstanding"], tip: "Sophisticated 'despite' - impresses", scene: "🔄 Despite obstacles" },
+                    { term: "albeit", ar: "(although)", awbw: "upgrade of: although", ex: ["Effective, albeit costly", "Albeit with limitations", "Successful, albeit slowly"], tip: "Elegant 'although' - very C1", scene: "➖ Conceding a point" },
+                    { term: "contingent upon", ar: "(depending on)", awbw: "phrase: conditional", ex: ["Success is contingent upon funding", "Contingent upon approval", "This is contingent upon results"], tip: "Formal 'depends on' - precise", scene: "🔗 Conditional outcome" },
+                    { term: "by no means", ar: "(definitely not)", awbw: "phrase: emphatic negative", ex: ["This is by no means certain", "By no means conclusive", "By no means the only factor"], tip: "Emphatic, elegant negation", scene: "🚫 Strong qualification" }
+                ]
+            }
+        };
+
+        // ═══════════════════════════════════════════════════════════════
+        // 🎓 دوال تثبيت منهج الإتقان
+        // ═══════════════════════════════════════════════════════════════
+        function installMasteryUnit(unitKey) {
+            const unit = MASTERY_CURRICULUM[unitKey];
+            if (!unit) return { added: 0 };
+            const catName = unit.emoji + ' ' + unit.title;
+            if (!categories.includes(catName)) {
+                categories.push(catName);
+                saveCats();
+            }
+            const existing = new Set(words.filter(w => w.c === catName).map(w => w.w));
+            let added = 0;
+            unit.cards.forEach(item => {
+                if (existing.has(item.term)) return;
+                words.push({
+                    w: item.term, m: item.ar, c: catName, qType: 'basic',
+                    arWordByWord: item.awbw, examples: item.ex, memoryTip: item.tip,
+                    categoryLabel: item.scene || unit.title, sceneContext: item.scene,
+                    level: unit.level, frequency: '⭐⭐⭐⭐⭐',
+                    intervalIdx: 0, nextReview: Date.now(), ef: 2.5,
+                    reps: 0, lapses: 0, stability: 0, difficulty: 5
+                });
+                added++;
+            });
+            saveWords();
+            return { added: added, catName: catName, unitTitle: unit.title };
+        }
+
+        function installFullMasteryCurriculum() {
+            let totalAdded = 0;
+            const installedUnits = [];
+            Object.keys(MASTERY_CURRICULUM).forEach(function(unitKey) {
+                const result = installMasteryUnit(unitKey);
+                totalAdded += result.added;
+                if (result.added > 0) installedUnits.push(result.unitTitle);
+            });
+            if (typeof refreshAllSettings === 'function') refreshAllSettings();
+            if (typeof updateHeroStats === 'function') updateHeroStats();
+            showToast('🎓 تم تثبيت ' + totalAdded + ' كتلة في ' + installedUnits.length + ' وحدات!');
+            return { totalAdded: totalAdded, units: installedUnits.length };
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // 🎓 متصفّح منهج الإتقان
+        // ═══════════════════════════════════════════════════════════════
+        function openMasteryBrowser() {
+            var existing = document.getElementById('mastery-modal');
+            if (existing) existing.remove();
+            var modal = document.createElement('div');
+            modal.id = 'mastery-modal';
+            modal.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:9999; display:flex; align-items:flex-end;';
+            modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+
+            var units = Object.entries(MASTERY_CURRICULUM);
+            var totalCards = 0;
+            units.forEach(function(pair) { totalCards += pair[1].cards.length; });
+
+            var phases = {};
+            units.forEach(function(pair) {
+                var u = pair[1];
+                if (!phases[u.phase]) phases[u.phase] = [];
+                phases[u.phase].push(pair);
+            });
+
+            var phasesHtml = '';
+            Object.keys(phases).forEach(function(phaseName) {
+                var phaseUnits = phases[phaseName];
+                var unitsHtml = '';
+                phaseUnits.forEach(function(pair) {
+                    var key = pair[0];
+                    var unit = pair[1];
+                    var isInstalled = categories.includes(unit.emoji + ' ' + unit.title);
+                    var btnBg = isInstalled ? 'rgba(78,205,196,0.10)' : 'linear-gradient(135deg, var(--gold), var(--orange))';
+                    var btnColor = isInstalled ? 'var(--green)' : 'white';
+                    var btnBorder = isInstalled ? '1px solid var(--green)' : 'none';
+                    var btnText = isInstalled ? '✓ مُثبّتة - أعد التثبيت' : '⬇️ ثبّت هذه الوحدة';
+                    var borderColor = isInstalled ? 'var(--green)' : 'var(--border)';
+                    unitsHtml += '<div style="padding:14px; background:rgba(255,255,255,0.03); border:1px solid ' + borderColor + '; border-radius:12px;">'
+                        + '<div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">'
+                        + '<div style="width:44px; height:44px; background:linear-gradient(135deg, var(--gold), var(--orange)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px;">' + unit.emoji + '</div>'
+                        + '<div style="flex:1;">'
+                        + '<div style="font-size:14px; font-weight:700; color:var(--text);">' + escapeHtml(unit.title) + '</div>'
+                        + '<div style="font-size:11px; color:var(--text-muted); margin-top:2px;">' + escapeHtml(unit.titleEn) + ' · ' + unit.level + '</div>'
+                        + '</div>'
+                        + '<span style="padding:3px 8px; background:rgba(255,209,102,0.15); color:var(--gold); border-radius:8px; font-size:10px; font-weight:700;">' + unit.cards.length + ' كتلة</span>'
+                        + '</div>'
+                        + '<div style="font-size:11px; color:var(--text-muted); line-height:1.6; margin-bottom:10px;">📍 ' + escapeHtml(unit.description) + '</div>'
+                        + '<div style="display:flex; gap:6px;">'
+                        + '<button onclick="masteryInstallUnit(\'' + key + '\')" style="flex:1; padding:10px; background:' + btnBg + '; color:' + btnColor + '; border:' + btnBorder + '; border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px;">'
+                        + btnText + '</button>'
+                        + '<button onclick="printOneUnit(\'MASTERY_CURRICULUM\', \'' + key + '\')" style="padding:10px 14px; background:rgba(255,159,67,0.12); color:var(--orange); border:1px solid var(--orange); border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px; white-space:nowrap;">🖨️ طباعة</button>'
+                        + '</div></div>';
+                });
+                phasesHtml += '<div style="margin-bottom:18px;">'
+                    + '<div style="font-size:12px; font-weight:700; color:var(--gold); margin-bottom:10px; padding:6px 12px; background:rgba(255,209,102,0.08); border-radius:8px; display:inline-block;">🎯 ' + escapeHtml(phaseName) + '</div>'
+                    + '<div style="display:flex; flex-direction:column; gap:10px;">' + unitsHtml + '</div></div>';
+            });
+
+            var h = '<div style="background:var(--card-bg); border-radius:16px 16px 0 0; max-width:480px; width:100%; margin:auto auto 0; max-height:92vh; display:flex; flex-direction:column;">'
+                + '<div style="padding:16px 20px; border-bottom:1px solid var(--border); background:linear-gradient(135deg, rgba(255,209,102,0.10), rgba(255,159,67,0.10));">'
+                + '<div style="display:flex; justify-content:space-between; align-items:center;">'
+                + '<div><div style="font-size:17px; font-weight:700; color:var(--text);">🎓 طريق الإتقان B1 → C1</div>'
+                + '<div style="font-size:11px; color:var(--text-muted); margin-top:3px;">لغة من عاش في الخارج - طبيعية وأكاديمية</div></div>'
+                + '<button onclick="document.getElementById(\'mastery-modal\').remove()" style="background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--text); width:32px; height:32px; border-radius:8px; cursor:pointer;">✕</button>'
+                + '</div></div>'
+                + '<div style="flex:1; overflow-y:auto; padding:16px 20px;">'
+                + '<div style="padding:14px; background:rgba(255,209,102,0.06); border:1px solid rgba(255,209,102,0.25); border-radius:12px; margin-bottom:16px;">'
+                + '<div style="font-size:12px; color:var(--text); line-height:1.9;">'
+                + '🔗 <b>التعبيرات الطبيعية:</b> make a decision (لا do)<br>'
+                + '💬 <b>الاصطلاحات:</b> on the same page, cut to the chase<br>'
+                + '⚡ <b>أفعال القوة:</b> demonstrate, substantiate, corroborate<br>'
+                + '🎯 <b>' + totalCards + ' كتلة</b> · 6 وحدات · كلها إنجليزي (C1)</div></div>'
+                + '<button onclick="masteryInstallAll()" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--gold), var(--orange)); color:white; border:none; border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:8px;">⬇️ ثبّت المنهج كاملاً (' + totalCards + ' كتلة)</button>'
+                + '<button onclick="printFullCurriculum(\'MASTERY_CURRICULUM\')" style="width:100%; padding:13px; background:rgba(255,159,67,0.10); color:var(--orange); border:1px solid var(--orange); border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:16px;">🖨️ طباعة المنهج كاملاً (بلا تثبيت)</button>'
+                + '<div style="font-size:11px; color:var(--orange); text-align:center; margin-bottom:16px; padding:8px; background:rgba(255,159,67,0.06); border-radius:8px;">💡 ابدأ هذا المنهج بعد إتقان جسر B1 - إنه المستوى التالي</div>'
+                + phasesHtml
+                + '</div>'
+                + '<div style="padding:14px 20px; border-top:1px solid var(--border);">'
+                + '<button onclick="document.getElementById(\'mastery-modal\').remove()" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); color:var(--text-muted); border:1px solid var(--border); border-radius:10px; font-family:Cairo; font-weight:700; cursor:pointer;">إغلاق</button>'
+                + '</div></div>';
+
+            modal.innerHTML = h;
+            document.body.appendChild(modal);
+        }
+
+        function masteryInstallUnit(key) {
+            var r = installMasteryUnit(key);
+            showToast('✅ تم تثبيت ' + r.added + ' كتلة');
+            openMasteryBrowser();
+        }
+        function masteryInstallAll() {
+            installFullMasteryCurriculum();
+            var m = document.getElementById('mastery-modal');
+            if (m) m.remove();
+        }
+
+
+
+        // ═══════════════════════════════════════════════════════════════
+        // 📊 لوحة قياس التقدم (Progress Dashboard)
+        // ═══════════════════════════════════════════════════════════════
+        // تكشف التقدم بالأرقام - تكسر خوف "أنا ثابت على A1"
+        // تقيس: الكلمات المتقنة، التوزيع حسب المستوى، نسبة B1، السلسلة
+        // ═══════════════════════════════════════════════════════════════
+
+        // حساب إحصائيات التقدم الشاملة
+        function computeProgressStats() {
+            const now = Date.now();
+            const total = words.length;
+            
+            // التصنيف حسب قوة الحفظ (reps + stability)
+            let mastered = 0;      // متقنة تماماً (reps>=4 أو stability عالية)
+            let learning = 0;      // قيد التعلم (reps 1-3)
+            let newCards = 0;      // جديدة (reps 0)
+            let strong = 0;        // stability >= 21 يوم (حفظ طويل المدى)
+            
+            // التوزيع حسب المستوى
+            const levelCount = { A1: 0, A2: 0, B1: 0, B2: 0, C1: 0, other: 0 };
+            const levelMastered = { A1: 0, A2: 0, B1: 0, B2: 0, C1: 0, other: 0 };
+            
+            words.forEach(function(w) {
+                const reps = w.reps || 0;
+                const stab = w.stability || 0;
+                
+                // التصنيف
+                if (reps === 0) newCards++;
+                else if (reps >= 4 || stab >= 21) mastered++;
+                else learning++;
+                
+                if (stab >= 21) strong++;
+                
+                // المستوى
+                let lvl = (w.level || 'other').toUpperCase();
+                if (!levelCount.hasOwnProperty(lvl)) lvl = 'other';
+                levelCount[lvl]++;
+                if (reps >= 4 || stab >= 21) levelMastered[lvl]++;
+            });
+            
+            // نسبة الإتقان الكلية
+            const masteryPct = total > 0 ? Math.round((mastered / total) * 100) : 0;
+            
+            // سجل الدراسة
+            let studyDays = 0;
+            let totalReviews = 0;
+            try {
+                const history = JSON.parse(localStorage.getItem('ahmed_study_history') || '{}');
+                studyDays = Object.keys(history).length;
+                totalReviews = Object.values(history).reduce(function(a, b) { return a + (parseInt(b) || 0); }, 0);
+            } catch (e) {}
+            
+            const streak = parseInt(localStorage.getItem('ahmed_streak') || '0');
+            
+            return {
+                total: total,
+                mastered: mastered,
+                learning: learning,
+                newCards: newCards,
+                strong: strong,
+                masteryPct: masteryPct,
+                levelCount: levelCount,
+                levelMastered: levelMastered,
+                studyDays: studyDays,
+                totalReviews: totalReviews,
+                streak: streak
+            };
+        }
+
+        // فتح لوحة التقدم
+        function openProgressDashboard() {
+            var existing = document.getElementById('progress-modal');
+            if (existing) existing.remove();
+            var modal = document.createElement('div');
+            modal.id = 'progress-modal';
+            modal.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:9999; display:flex; align-items:flex-end;';
+            modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+
+            var s = computeProgressStats();
+
+            // بناء أشرطة المستويات
+            var levels = ['A1', 'A2', 'B1', 'B2', 'C1'];
+            var levelColors = { A1: '#4ecdc4', A2: '#00d4ff', B1: '#8a4fff', B2: '#ff9f43', C1: '#ffd166' };
+            var levelsHtml = '';
+            levels.forEach(function(lvl) {
+                var count = s.levelCount[lvl] || 0;
+                if (count === 0) return;
+                var mast = s.levelMastered[lvl] || 0;
+                var pct = count > 0 ? Math.round((mast / count) * 100) : 0;
+                levelsHtml += '<div style="margin-bottom:12px;">'
+                    + '<div style="display:flex; justify-content:space-between; margin-bottom:5px;">'
+                    + '<span style="font-size:12px; font-weight:700; color:var(--text);">' + lvl + ' <span style="font-size:10px; color:var(--text-muted);">(' + count + ' كلمة)</span></span>'
+                    + '<span style="font-size:12px; color:' + levelColors[lvl] + '; font-weight:700;">' + mast + '/' + count + ' (' + pct + '%)</span>'
+                    + '</div>'
+                    + '<div style="height:8px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden;">'
+                    + '<div style="height:100%; width:' + pct + '%; background:' + levelColors[lvl] + '; border-radius:4px;"></div>'
+                    + '</div></div>';
+            });
+            if (levelsHtml === '') {
+                levelsHtml = '<div style="text-align:center; padding:20px; color:var(--text-muted); font-size:13px;">ابدأ الدراسة لترى توزيع مستوياتك</div>';
+            }
+
+            // رسالة تحفيزية حسب التقدم
+            var motivationMsg = '';
+            if (s.mastered === 0) {
+                motivationMsg = '🌱 رحلتك تبدأ الآن - كل خبير كان مبتدئاً';
+            } else if (s.masteryPct < 25) {
+                motivationMsg = '💪 بداية قوية! ' + s.mastered + ' كلمة في ذاكرتك بالفعل';
+            } else if (s.masteryPct < 50) {
+                motivationMsg = '🔥 تقدّم رائع! أتقنت ربع طريقك';
+            } else if (s.masteryPct < 75) {
+                motivationMsg = '⭐ أنت متقدّم! أكثر من نصف المحتوى راسخ';
+            } else {
+                motivationMsg = '👑 إنجاز مذهل! أنت تقترب من الإتقان الكامل';
+            }
+
+            var h = '<div style="background:var(--card-bg); border-radius:16px 16px 0 0; max-width:480px; width:100%; margin:auto auto 0; max-height:92vh; display:flex; flex-direction:column;">'
+                + '<div style="padding:16px 20px; border-bottom:1px solid var(--border); background:linear-gradient(135deg, rgba(78,205,196,0.10), rgba(0,212,255,0.10));">'
+                + '<div style="display:flex; justify-content:space-between; align-items:center;">'
+                + '<div><div style="font-size:17px; font-weight:700; color:var(--text);">📊 تقدّمك بالأرقام</div>'
+                + '<div style="font-size:11px; color:var(--text-muted); margin-top:3px;">الدليل الموضوعي أنك تتقدّم فعلاً</div></div>'
+                + '<button onclick="document.getElementById(\'progress-modal\').remove()" style="background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--text); width:32px; height:32px; border-radius:8px; cursor:pointer;">✕</button>'
+                + '</div></div>'
+                + '<div style="flex:1; overflow-y:auto; padding:16px 20px;">'
+                
+                // رسالة تحفيزية
+                + '<div style="padding:14px; background:linear-gradient(135deg, rgba(138,79,255,0.10), rgba(0,212,255,0.10)); border:1px solid rgba(138,79,255,0.25); border-radius:12px; margin-bottom:16px; text-align:center;">'
+                + '<div style="font-size:14px; color:var(--text); font-weight:700;">' + motivationMsg + '</div></div>'
+                
+                // البطاقة الكبرى: نسبة الإتقان
+                + '<div style="text-align:center; padding:20px; background:rgba(255,255,255,0.03); border-radius:14px; margin-bottom:16px;">'
+                + '<div style="font-size:48px; font-weight:900; background:linear-gradient(135deg, var(--violet), var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">' + s.masteryPct + '%</div>'
+                + '<div style="font-size:12px; color:var(--text-muted); margin-top:4px;">نسبة الإتقان الكلية</div>'
+                + '<div style="height:10px; background:rgba(255,255,255,0.06); border-radius:5px; overflow:hidden; margin-top:12px;">'
+                + '<div style="height:100%; width:' + s.masteryPct + '%; background:linear-gradient(90deg, var(--violet), var(--cyan)); border-radius:5px;"></div></div>'
+                + '</div>'
+                
+                // 4 إحصائيات رئيسية
+                + '<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px;">'
+                + '<div style="text-align:center; padding:14px; background:rgba(78,205,196,0.06); border:1px solid rgba(78,205,196,0.2); border-radius:12px;"><div style="font-size:26px; font-weight:800; color:var(--green);">' + s.mastered + '</div><div style="font-size:11px; color:var(--text-muted);">كلمة متقنة ✓</div></div>'
+                + '<div style="text-align:center; padding:14px; background:rgba(138,79,255,0.06); border:1px solid rgba(138,79,255,0.2); border-radius:12px;"><div style="font-size:26px; font-weight:800; color:var(--violet);">' + s.learning + '</div><div style="font-size:11px; color:var(--text-muted);">قيد التعلّم</div></div>'
+                + '<div style="text-align:center; padding:14px; background:rgba(255,209,102,0.06); border:1px solid rgba(255,209,102,0.2); border-radius:12px;"><div style="font-size:26px; font-weight:800; color:var(--gold);">' + s.strong + '</div><div style="font-size:11px; color:var(--text-muted);">راسخة (3 أسابيع+)</div></div>'
+                + '<div style="text-align:center; padding:14px; background:rgba(255,159,67,0.06); border:1px solid rgba(255,159,67,0.2); border-radius:12px;"><div style="font-size:26px; font-weight:800; color:var(--orange);">' + s.streak + '</div><div style="font-size:11px; color:var(--text-muted);">يوم متتالٍ 🔥</div></div>'
+                + '</div>'
+                
+                // التوزيع حسب المستوى
+                + '<div style="font-size:14px; font-weight:700; color:var(--text); margin-bottom:12px;">📈 إتقانك حسب المستوى</div>'
+                + levelsHtml
+                
+                // سجل الدراسة
+                + '<div style="margin-top:16px; padding:14px; background:rgba(0,212,255,0.06); border:1px solid rgba(0,212,255,0.2); border-radius:12px;">'
+                + '<div style="display:flex; justify-content:space-around; text-align:center;">'
+                + '<div><div style="font-size:22px; font-weight:800; color:var(--cyan);">' + s.studyDays + '</div><div style="font-size:10px; color:var(--text-muted);">يوم دراسة</div></div>'
+                + '<div><div style="font-size:22px; font-weight:800; color:var(--cyan);">' + s.totalReviews + '</div><div style="font-size:10px; color:var(--text-muted);">مراجعة كلية</div></div>'
+                + '<div><div style="font-size:22px; font-weight:800; color:var(--cyan);">' + s.total + '</div><div style="font-size:10px; color:var(--text-muted);">إجمالي البطاقات</div></div>'
+                + '</div></div>'
+                
+                + '</div>'
+                + '<div style="padding:14px 20px; border-top:1px solid var(--border);">'
+                + '<button onclick="document.getElementById(\'progress-modal\').remove()" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); color:var(--text-muted); border:1px solid var(--border); border-radius:10px; font-family:Cairo; font-weight:700; cursor:pointer;">إغلاق</button>'
+                + '</div></div>';
+
+            modal.innerHTML = h;
+            document.body.appendChild(modal);
+        }
+
+
+        // ═══════════════════════════════════════════════════════════════
+        // 📄 تصدير المحتوى PDF (للطباعة والمذاكرة اليدوية)
+        // ═══════════════════════════════════════════════════════════════
+        // يعرض المنهج كاملاً منظّماً - ترى الطريق قبل البدء + تذاكر بيدك
+        // يستخدم window.print (المتصفح يحوّلها PDF) - بلا مكتبات خارجية
+        // ═══════════════════════════════════════════════════════════════
+
+        // فتح نافذة اختيار ما يُصدّر
+        function openPdfExport() {
+            var existing = document.getElementById('pdf-modal');
+            if (existing) existing.remove();
+            var modal = document.createElement('div');
+            modal.id = 'pdf-modal';
+            modal.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:9999; display:flex; align-items:flex-end;';
+            modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+
+            // اجمع الأقسام: المثبّتة + كل المناهج المتاحة (حتى غير المثبّتة)
+            // هذا يتيح طباعة أي منهج مباشرة لرؤيته قبل البدء
+            var catSources = {};  // catName -> {count, cards, installed}
+            
+            // 1. الأقسام المثبّتة (من words الفعلية)
+            categories.forEach(function(cat) {
+                var catCards = words.filter(function(w) { return w.c === cat; });
+                if (catCards.length > 0) {
+                    catSources[cat] = { count: catCards.length, cards: catCards, installed: true };
+                }
+            });
+            
+            // 2. منهج عائلتك (حتى لو غير مثبّت)
+            if (typeof ENGLISH_FAMILY_CURRICULUM !== 'undefined') {
+                Object.values(ENGLISH_FAMILY_CURRICULUM).forEach(function(u) {
+                    var catName = u.emoji + ' ' + u.title;
+                    if (!catSources[catName]) {
+                        catSources[catName] = { count: u.cards.length, cards: u.cards, installed: false, fromCurriculum: true };
+                    }
+                });
+            }
+            // 3. منهج جسر B1 (حتى لو غير مثبّت)
+            if (typeof B1_BRIDGE_CURRICULUM !== 'undefined') {
+                Object.values(B1_BRIDGE_CURRICULUM).forEach(function(u) {
+                    var catName = u.emoji + ' ' + u.title;
+                    if (!catSources[catName]) {
+                        catSources[catName] = { count: u.cards.length, cards: u.cards, installed: false, fromCurriculum: true };
+                    }
+                });
+            }
+            // 4. منهج الإتقان (حتى لو غير مثبّت)
+            if (typeof MASTERY_CURRICULUM !== 'undefined') {
+                Object.values(MASTERY_CURRICULUM).forEach(function(u) {
+                    var catName = u.emoji + ' ' + u.title;
+                    if (!catSources[catName]) {
+                        catSources[catName] = { count: u.cards.length, cards: u.cards, installed: false, fromCurriculum: true };
+                    }
+                });
+            }
+            
+            // خزّن المصادر عالمياً ليستخدمها buildPrintHtml
+            window._pdfCatSources = catSources;
+            
+            var cats = Object.keys(catSources);
+            var catsHtml = '';
+            cats.forEach(function(cat) {
+                var info = catSources[cat];
+                var badge = info.installed 
+                    ? '<span style="font-size:9px; background:rgba(78,205,196,0.15); color:var(--green); padding:2px 6px; border-radius:5px;">مثبّت</span>'
+                    : '<span style="font-size:9px; background:rgba(255,159,67,0.15); color:var(--orange); padding:2px 6px; border-radius:5px;">منهج</span>';
+                catsHtml += '<label style="display:flex; align-items:center; gap:10px; padding:12px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:10px; margin-bottom:8px; cursor:pointer;">'
+                    + '<input type="checkbox" class="pdf-cat-check" value="' + encodeURIComponent(cat) + '" checked style="width:18px; height:18px; accent-color:var(--violet);">'
+                    + '<span style="flex:1; font-size:13px; color:var(--text);">' + escapeHtml(cat) + '</span>'
+                    + badge
+                    + '<span style="font-size:11px; color:var(--text-muted);">' + info.count + '</span>'
+                    + '</label>';
+            });
+            if (catsHtml === '') {
+                catsHtml = '<div style="text-align:center; padding:20px; color:var(--text-muted); font-size:13px;">لا توجد مناهج متاحة</div>';
+            }
+
+            var h = '<div style="background:var(--card-bg); border-radius:16px 16px 0 0; max-width:480px; width:100%; margin:auto auto 0; max-height:92vh; display:flex; flex-direction:column;">'
+                + '<div style="padding:16px 20px; border-bottom:1px solid var(--border); background:linear-gradient(135deg, rgba(255,159,67,0.10), rgba(255,209,102,0.10));">'
+                + '<div style="display:flex; justify-content:space-between; align-items:center;">'
+                + '<div><div style="font-size:17px; font-weight:700; color:var(--text);">📄 تصدير PDF للمذاكرة</div>'
+                + '<div style="font-size:11px; color:var(--text-muted); margin-top:3px;">اطبع المحتوى واكتبه بيدك لحفظ أعمق</div></div>'
+                + '<button onclick="document.getElementById(\'pdf-modal\').remove()" style="background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--text); width:32px; height:32px; border-radius:8px; cursor:pointer;">✕</button>'
+                + '</div></div>'
+                + '<div style="flex:1; overflow-y:auto; padding:16px 20px;">'
+                
+                + '<div style="padding:12px; background:rgba(255,209,102,0.06); border:1px solid rgba(255,209,102,0.25); border-radius:10px; margin-bottom:16px;">'
+                + '<div style="font-size:12px; color:var(--text); line-height:1.8;">'
+                + '✍️ <b>الكتابة باليد تضاعف الحفظ</b> (مثبت علمياً)<br>'
+                + '📖 ترى المنهج كاملاً قبل البدء<br>'
+                + '📄 اختر الأقسام ثم اطبع أو احفظ PDF</div></div>'
+                
+                // نوع التصدير
+                + '<div style="font-size:13px; font-weight:700; color:var(--text); margin-bottom:10px;">📋 نوع المحتوى</div>'
+                + '<div style="display:flex; gap:8px; margin-bottom:16px;">'
+                + '<label style="flex:1; display:flex; align-items:center; gap:8px; padding:12px; background:rgba(138,79,255,0.06); border:1px solid var(--violet); border-radius:10px; cursor:pointer;">'
+                + '<input type="radio" name="pdf-type" value="full" checked style="accent-color:var(--violet);">'
+                + '<span style="font-size:12px; color:var(--text);">كامل (مع الأمثلة)</span></label>'
+                + '<label style="flex:1; display:flex; align-items:center; gap:8px; padding:12px; background:rgba(0,212,255,0.06); border:1px solid var(--border); border-radius:10px; cursor:pointer;">'
+                + '<input type="radio" name="pdf-type" value="write" style="accent-color:var(--cyan);">'
+                + '<span style="font-size:12px; color:var(--text);">للكتابة (فراغات)</span></label>'
+                + '</div>'
+                
+                // اختيار الأقسام
+                + '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">'
+                + '<span style="font-size:13px; font-weight:700; color:var(--text);">📚 الأقسام</span>'
+                + '<button onclick="togglePdfCats()" style="font-size:11px; color:var(--cyan); background:none; border:none; cursor:pointer; font-family:Cairo;">تحديد/إلغاء الكل</button>'
+                + '</div>'
+                + catsHtml
+                
+                + '</div>'
+                + '<div style="padding:14px 20px; border-top:1px solid var(--border);">'
+                + '<button onclick="generatePdf()" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--orange), var(--gold)); color:white; border:none; border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:8px;">📄 إنشاء PDF / طباعة</button>'
+                + '<button onclick="document.getElementById(\'pdf-modal\').remove()" style="width:100%; padding:10px; background:rgba(255,255,255,0.05); color:var(--text-muted); border:1px solid var(--border); border-radius:10px; font-family:Cairo; font-weight:700; cursor:pointer;">إغلاق</button>'
+                + '</div></div>';
+
+            modal.innerHTML = h;
+            document.body.appendChild(modal);
+        }
+
+        function togglePdfCats() {
+            var checks = document.querySelectorAll('.pdf-cat-check');
+            var allChecked = Array.prototype.every.call(checks, function(c) { return c.checked; });
+            checks.forEach(function(c) { c.checked = !allChecked; });
+        }
+
+        // توليد الـ PDF (عبر نافذة طباعة منسّقة)
+        function generatePdf() {
+            var checks = document.querySelectorAll('.pdf-cat-check:checked');
+            if (checks.length === 0) {
+                showToast('اختر قسماً واحداً على الأقل');
+                return;
+            }
+            var selectedCats = Array.prototype.map.call(checks, function(c) { return decodeURIComponent(c.value); });
+            var typeEl = document.querySelector('input[name="pdf-type"]:checked');
+            var isWriteMode = typeEl && typeEl.value === 'write';
+
+            // ابنِ HTML الطباعة
+            var printHtml = buildPrintHtml(selectedCats, isWriteMode);
+
+            // افتح نافذة جديدة للطباعة
+            var win = window.open('', '_blank');
+            if (!win) {
+                showToast('السماح بالنوافذ المنبثقة مطلوب / Allow popups');
+                return;
+            }
+            win.document.write(printHtml);
+            win.document.close();
+            // انتظر التحميل ثم اطبع
+            setTimeout(function() {
+                win.print();
+            }, 500);
+
+            var m = document.getElementById('pdf-modal');
+            if (m) m.remove();
+        }
+
+        // بناء HTML منسّق للطباعة
+        function buildPrintHtml(selectedCats, isWriteMode) {
+            var today = new Date().toLocaleDateString('ar-SA');
+            var html = '<!DOCTYPE html><html dir="rtl" lang="ar"><head><meta charset="UTF-8">';
+            html += '<title>منهج إتقان - أحمد الزهراني</title>';
+            html += '<style>';
+            html += '@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap");';
+            html += '* { margin:0; padding:0; box-sizing:border-box; font-family:Cairo, Arial, sans-serif; }';
+            html += 'body { padding:20px 28px; color:#1a1a1a; line-height:1.6; }';
+            html += '.header { text-align:center; padding:20px 0; border-bottom:3px solid #8a4fff; margin-bottom:24px; }';
+            html += '.header h1 { font-size:24px; color:#8a4fff; margin-bottom:6px; }';
+            html += '.header .sub { font-size:13px; color:#666; }';
+            html += '.unit { margin-bottom:28px; page-break-inside:avoid; }';
+            html += '.unit-title { font-size:18px; font-weight:700; color:#fff; background:linear-gradient(135deg, #8a4fff, #00d4ff); padding:10px 16px; border-radius:8px; margin-bottom:14px; }';
+            html += '.card { padding:12px 16px; border:1px solid #ddd; border-radius:8px; margin-bottom:10px; page-break-inside:avoid; }';
+            html += '.card-term { font-size:17px; font-weight:700; color:#1a1a1a; direction:ltr; text-align:left; margin-bottom:4px; }';
+            html += '.card-meaning { font-size:14px; color:#8a4fff; font-weight:600; margin-bottom:6px; }';
+            html += '.card-awbw { font-size:12px; color:#666; margin-bottom:6px; font-style:italic; }';
+            html += '.card-ex { font-size:13px; color:#333; direction:ltr; text-align:left; padding:3px 0; border-top:1px dashed #eee; margin-top:4px; }';
+            html += '.card-tip { font-size:12px; color:#e67e22; margin-top:6px; }';
+            html += '.write-line { border-bottom:1.5px solid #bbb; height:26px; margin:8px 0; }';
+            html += '.write-label { font-size:11px; color:#999; }';
+            html += '.footer { text-align:center; margin-top:30px; padding-top:16px; border-top:2px solid #ddd; font-size:11px; color:#999; }';
+            html += '@media print { body { padding:12px; } .unit { page-break-inside:avoid; } }';
+            html += '</style></head><body>';
+
+            // الهيدر
+            html += '<div class="header"><h1>📚 منهج إتقان الإنجليزية</h1>';
+            html += '<div class="sub">م. أحمد عطية الزهراني — جامعة الباحة · ' + today + '</div></div>';
+
+            // كل قسم - يقرأ من المصادر (المثبّتة + المناهج غير المثبّتة)
+            var sources = window._pdfCatSources || {};
+            selectedCats.forEach(function(cat) {
+                var info = sources[cat];
+                var rawCards;
+                if (info && info.cards) {
+                    rawCards = info.cards;
+                } else {
+                    rawCards = words.filter(function(w) { return w.c === cat; });
+                }
+                if (!rawCards || rawCards.length === 0) return;
+                
+                // طبّع البنية (المثبّت يستخدم w/m/arWordByWord، المنهج يستخدم term/ar/awbw)
+                var cards = rawCards.map(function(c) {
+                    return {
+                        w: c.w || c.term || '',
+                        m: c.m || c.ar || '',
+                        arWordByWord: c.arWordByWord || c.awbw || '',
+                        examples: c.examples || c.ex || [],
+                        memoryTip: c.memoryTip || c.tip || ''
+                    };
+                });
+                
+                html += '<div class="unit">';
+                html += '<div class="unit-title">' + escapeHtmlPrint(cat) + ' (' + cards.length + ' كتلة)</div>';
+
+                cards.forEach(function(card) {
+                    html += '<div class="card">';
+                    html += '<div class="card-term">' + escapeHtmlPrint(card.w) + '</div>';
+
+                    if (isWriteMode) {
+                        // وضع الكتابة: المعنى + فراغ للكتابة
+                        html += '<div class="card-meaning">' + escapeHtmlPrint(card.m) + '</div>';
+                        html += '<div class="write-label">اكتب الكلمة 3 مرات:</div>';
+                        html += '<div class="write-line"></div>';
+                        html += '<div class="write-label">اكتب جملة من عندك:</div>';
+                        html += '<div class="write-line"></div>';
+                    } else {
+                        // الوضع الكامل: كل التفاصيل
+                        html += '<div class="card-meaning">' + escapeHtmlPrint(card.m) + '</div>';
+                        if (card.arWordByWord) html += '<div class="card-awbw">' + escapeHtmlPrint(card.arWordByWord) + '</div>';
+                        if (card.examples && card.examples.length > 0) {
+                            card.examples.forEach(function(ex) {
+                                html += '<div class="card-ex">• ' + escapeHtmlPrint(ex) + '</div>';
+                            });
+                        }
+                        if (card.memoryTip) html += '<div class="card-tip">💡 ' + escapeHtmlPrint(card.memoryTip) + '</div>';
+                    }
+                    html += '</div>';
+                });
+                html += '</div>';
+            });
+
+            html += '<div class="footer">Ahmed SRS Pro © 2026 — طريقك نحو الإتقان</div>';
+            html += '</body></html>';
+            return html;
+        }
+
+        // نسخة آمنة من escapeHtml للطباعة
+        function escapeHtmlPrint(str) {
+            if (str == null) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+
+
+        // ═══════════════════════════════════════════════════════════════
+        // 🧹 تنظيف الإعدادات - إخفاء الأقسام المكررة/الزائدة
+        // ═══════════════════════════════════════════════════════════════
+        // المسار الذكي يحلّ محلّ: المرشد القديم + التركيز + خطة الدراسة
+        // إخفاء (لا حذف) - يقلّل الزخم ويزيل التشتت
+        // ═══════════════════════════════════════════════════════════════
+        function cleanupSettings() {
+            // الأقسام الزائدة المراد إخفاؤها
+            var toHide = [
+                'sec-ai-tutor',    // المرشد القديم (المسار الذكي أفضل)
+                'sec-focus',       // وضع التركيز (مكرر)
+                'sec-study-plan',  // خطة الدراسة (مكرر)
+                'sec-shortcuts',   // اختصارات الكيبورد (بلا فائدة على الجوال)
+                'sec-add-v',       // إضافة مصطلح يدوي (اللصق الذكي أفضل)
+                'sec-add-k'        // إضافة سؤال معرفي (نادر)
+            ];
+            toHide.forEach(function(secId) {
+                var toggle = document.querySelector('[data-toggle="' + secId + '"]');
+                if (toggle) {
+                    // أخفِ الحاوية الأم (الكرت كامل)
+                    var container = toggle.parentElement;
+                    if (container) container.style.display = 'none';
+                }
+            });
+        }
+        // شغّلها عند التحميل
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', cleanupSettings);
+        } else {
+            setTimeout(cleanupSettings, 100);
+        }
+
+
+
+        // ═══════════════════════════════════════════════════════════════
+        // 🎯 الكلمات الأساسية (قاعدة 20/80) - A1/A2
+        // ═══════════════════════════════════════════════════════════════
+        // أكثر الكلمات شيوعاً في الإنجليزية - تغطي ~80% من الكلام
+        // مرتّبة حسب التكرار الفعلي (Oxford 3000 + COCA frequency)
+        // ═══════════════════════════════════════════════════════════════
+        const CORE_VOCAB_2080 = {
+            core_a1_essentials: {
+                title: "أهم 100 كلمة (A1)",
+                titleEn: "Top 100 Words",
+                emoji: "🎯",
+                level: "A1",
+                phase: "قاعدة 20/80 · الأساس",
+                description: "الكلمات الأكثر شيوعاً - تغطي 50% من أي محادثة",
+                scene: "الكلمات التي تتكرر في كل جملة",
+                cards: [
+                    { term: "the", ar: "الـ (أداة تعريف)", awbw: "أكثر كلمة شيوعاً في الإنجليزية", ex: ["the book = الكتاب", "the man = الرجل", "the house = البيت"], tip: "للأشياء المعروفة المحددة", scene: "📌 تحدد شيئاً معيناً" },
+                    { term: "be", ar: "يكون", awbw: "am/is/are = صيغ be", ex: ["I am = أنا أكون", "she is = هي تكون", "they are = هم يكونون"], tip: "أهم فعل - يصف الحالة والهوية", scene: "🔤 تصف من/ما يكون شيء" },
+                    { term: "have", ar: "يملك / لديه", awbw: "have/has = امتلاك", ex: ["I have a car = لدي سيارة", "she has time = لديها وقت", "we have food = لدينا طعام"], tip: "للملكية وأيضاً للأزمنة", scene: "🤲 تملك شيئاً" },
+                    { term: "do", ar: "يفعل", awbw: "do/does = فعل + سؤال", ex: ["I do my work = أؤدي عملي", "do you know = هل تعرف", "she does well = تبلي حسناً"], tip: "للأفعال وتكوين الأسئلة", scene: "⚙️ تقوم بعمل" },
+                    { term: "say", ar: "يقول", awbw: "say/said = قول", ex: ["I say yes = أقول نعم", "he said no = قال لا", "say it again = قلها ثانية"], tip: "للتعبير عن الكلام", scene: "💬 تنطق كلاماً" },
+                    { term: "go", ar: "يذهب", awbw: "go/went/gone = ذهاب", ex: ["I go home = أذهب للبيت", "she went out = خرجت", "let's go = هيا بنا"], tip: "للحركة والانتقال", scene: "🚶 تنتقل لمكان" },
+                    { term: "get", ar: "يحصل / يصبح", awbw: "get = حصول + معانٍ كثيرة", ex: ["I get it = أفهمها", "get ready = استعد", "get home = تصل البيت"], tip: "أكثر فعل مرونة - معانٍ كثيرة", scene: "🎯 تحصل على شيء" },
+                    { term: "make", ar: "يصنع / يجعل", awbw: "make/made = صنع", ex: ["make food = تصنع طعاماً", "make a call = تجري مكالمة", "it makes sense = منطقي"], tip: "للصنع والإنتاج", scene: "🔨 تنشئ شيئاً" },
+                    { term: "know", ar: "يعرف", awbw: "know/knew = معرفة", ex: ["I know = أعرف", "do you know = هل تعرف", "I don't know = لا أعرف"], tip: "للمعرفة والإدراك", scene: "🧠 تملك معلومة" },
+                    { term: "think", ar: "يفكّر / يظن", awbw: "think/thought = تفكير", ex: ["I think so = أظن ذلك", "think about it = فكّر فيها", "what do you think = ما رأيك"], tip: "للرأي والتفكير", scene: "💭 تكوّن رأياً" },
+                    { term: "see", ar: "يرى", awbw: "see/saw/seen = رؤية", ex: ["I see = أرى/فهمت", "see you = أراك", "did you see = هل رأيت"], tip: "للرؤية والفهم", scene: "👁️ تبصر شيئاً" },
+                    { term: "come", ar: "يأتي", awbw: "come/came = إتيان", ex: ["come here = تعال", "I come from = أنا من", "come back = ارجع"], tip: "للحضور والقدوم", scene: "🚪 تصل لمكان" },
+                    { term: "want", ar: "يريد", awbw: "want = إرادة", ex: ["I want this = أريد هذا", "do you want = هل تريد", "I don't want = لا أريد"], tip: "للرغبة والطلب", scene: "🎯 ترغب بشيء" },
+                    { term: "use", ar: "يستخدم", awbw: "use/used = استخدام", ex: ["use it = استخدمه", "I used to = اعتدت", "how to use = كيف تستخدم"], tip: "للاستعمال", scene: "🔧 توظّف أداة" },
+                    { term: "find", ar: "يجد", awbw: "find/found = إيجاد", ex: ["I find it = أجده", "find out = تكتشف", "can't find = لا أجد"], tip: "للعثور والاكتشاف", scene: "🔍 تعثر على شيء" },
+                    { term: "give", ar: "يعطي", awbw: "give/gave = إعطاء", ex: ["give me = أعطني", "give up = تستسلم", "I gave it = أعطيتها"], tip: "للمنح والإعطاء", scene: "🤝 تمنح شيئاً" },
+                    { term: "tell", ar: "يخبر", awbw: "tell/told = إخبار", ex: ["tell me = أخبرني", "I told you = أخبرتك", "tell the truth = قل الحقيقة"], tip: "لنقل المعلومة لشخص", scene: "🗣️ تنقل خبراً" },
+                    { term: "work", ar: "يعمل", awbw: "work = عمل + يشتغل", ex: ["I work here = أعمل هنا", "it works = إنه يعمل", "hard work = عمل شاق"], tip: "للعمل والوظيفة", scene: "💼 تؤدي مهمة" },
+                    { term: "call", ar: "ينادي / يتصل", awbw: "call = نداء + اتصال", ex: ["call me = اتصل بي", "I'll call = سأتصل", "what's it called = ماذا يُسمى"], tip: "للاتصال والتسمية", scene: "📞 تتواصل" },
+                    { term: "ask", ar: "يسأل / يطلب", awbw: "ask = سؤال + طلب", ex: ["ask him = اسأله", "can I ask = هل أسأل", "ask for help = اطلب مساعدة"], tip: "للسؤال والطلب", scene: "❓ تستفسر" },
+                    { term: "need", ar: "يحتاج", awbw: "need = حاجة", ex: ["I need it = أحتاجه", "you need to = تحتاج أن", "need help = أحتاج مساعدة"], tip: "للضرورة والحاجة", scene: "🆘 تتطلّب شيئاً" },
+                    { term: "feel", ar: "يشعر", awbw: "feel/felt = شعور", ex: ["I feel good = أشعر بخير", "how do you feel = كيف تشعر", "feel free = لا تتردد"], tip: "للمشاعر والإحساس", scene: "❤️ تحسّ بشيء" },
+                    { term: "become", ar: "يصبح", awbw: "become/became = صيرورة", ex: ["become better = تصبح أفضل", "it became = أصبح", "become a doctor = تصبح طبيباً"], tip: "للتحول والتغير", scene: "🔄 تتحول لحال" },
+                    { term: "leave", ar: "يغادر / يترك", awbw: "leave/left = مغادرة", ex: ["I leave now = أغادر الآن", "leave it = اتركه", "she left = غادرت"], tip: "للرحيل والترك", scene: "🚪 تخرج من مكان" },
+                    { term: "put", ar: "يضع", awbw: "put/put = وضع", ex: ["put it here = ضعه هنا", "put on = ترتدي", "put away = ترتّب"], tip: "للوضع والتنسيق", scene: "📥 تضع شيئاً" }
+                ]
+            },
+            core_a2_connectors: {
+                title: "كلمات الربط والوقت (A2)",
+                titleEn: "Connectors & Time",
+                emoji: "🔗",
+                level: "A2",
+                phase: "قاعدة 20/80 · الربط",
+                description: "الكلمات التي تربط أفكارك وتحدد الوقت",
+                scene: "تربط جملك وتحدد متى",
+                cards: [
+                    { term: "because", ar: "لأنّ", awbw: "سبب", ex: ["because I'm tired = لأني متعب", "why? because = لماذا؟ لأن", "just because = فقط لأن"], tip: "تشرح السبب", scene: "🔗 تعطي سبباً" },
+                    { term: "but", ar: "لكن", awbw: "تعارض", ex: ["good but hard = جيد لكن صعب", "but why = لكن لماذا", "yes but = نعم لكن"], tip: "تعرض تعارضاً", scene: "⚖️ تضع استثناءً" },
+                    { term: "so", ar: "إذن / لذلك", awbw: "نتيجة", ex: ["so what = إذن ماذا", "I'm tired so = متعب لذا", "so good = جيد جداً"], tip: "تبيّن نتيجة", scene: "➡️ تستنتج" },
+                    { term: "if", ar: "إذا / لو", awbw: "شرط", ex: ["if you want = إذا أردت", "if not = إن لم", "what if = ماذا لو"], tip: "تضع شرطاً", scene: "❓ تفترض حالة" },
+                    { term: "when", ar: "متى / عندما", awbw: "وقت", ex: ["when? = متى؟", "when I come = عندما آتي", "since when = منذ متى"], tip: "تحدد وقتاً", scene: "🕐 تسأل عن الزمن" },
+                    { term: "now", ar: "الآن", awbw: "اللحظة الحالية", ex: ["right now = الآن حالاً", "not now = ليس الآن", "until now = حتى الآن"], tip: "للوقت الحاضر", scene: "⏰ اللحظة الراهنة" },
+                    { term: "then", ar: "ثم / حينها", awbw: "بعد ذلك", ex: ["and then = ثم", "back then = حينها", "until then = حتى ذلك الحين"], tip: "للتسلسل الزمني", scene: "⏭️ الخطوة التالية" },
+                    { term: "always", ar: "دائماً", awbw: "كل الأوقات", ex: ["I always do = أفعل دائماً", "always here = دائماً هنا", "almost always = غالباً دائماً"], tip: "للتكرار الدائم", scene: "🔁 بلا انقطاع" },
+                    { term: "never", ar: "أبداً", awbw: "ولا مرة", ex: ["I never go = لا أذهب أبداً", "never mind = لا يهم", "never again = أبداً ثانية"], tip: "للنفي المطلق", scene: "🚫 ولا مرة واحدة" },
+                    { term: "sometimes", ar: "أحياناً", awbw: "بعض الأوقات", ex: ["sometimes yes = أحياناً نعم", "sometimes I think = أحياناً أفكر", "only sometimes = أحياناً فقط"], tip: "للتكرار الجزئي", scene: "🔀 من حين لآخر" },
+                    { term: "before", ar: "قبل", awbw: "سابقاً", ex: ["before now = قبل الآن", "the day before = اليوم السابق", "never before = لم يسبق"], tip: "للزمن السابق", scene: "⏮️ في وقت أسبق" },
+                    { term: "after", ar: "بعد", awbw: "لاحقاً", ex: ["after that = بعد ذلك", "after you = بعدك", "the day after = اليوم التالي"], tip: "للزمن اللاحق", scene: "⏩ في وقت لاحق" },
+                    { term: "also", ar: "أيضاً", awbw: "إضافة", ex: ["me also = أنا أيضاً", "also true = صحيح أيضاً", "and also = وكذلك"], tip: "لإضافة معلومة", scene: "➕ زيادةً على ذلك" },
+                    { term: "only", ar: "فقط", awbw: "حصر", ex: ["only one = واحد فقط", "if only = لو فقط", "not only = ليس فقط"], tip: "للحصر والتحديد", scene: "1️⃣ لا أكثر" },
+                    { term: "still", ar: "ما زال", awbw: "استمرار", ex: ["still here = ما زلت هنا", "still good = لا يزال جيداً", "but still = لكن مع ذلك"], tip: "للاستمرارية", scene: "⏳ حتى الآن مستمر" },
+                    { term: "already", ar: "بالفعل", awbw: "تمّ مسبقاً", ex: ["already done = تمّ بالفعل", "already know = أعرف مسبقاً", "not already = ليس بعد"], tip: "لما حدث مسبقاً", scene: "✅ سبق وحدث" },
+                    { term: "maybe", ar: "ربما", awbw: "احتمال", ex: ["maybe yes = ربما نعم", "maybe later = ربما لاحقاً", "maybe not = ربما لا"], tip: "للاحتمال", scene: "🤔 ليس مؤكداً" },
+                    { term: "about", ar: "حول / تقريباً", awbw: "بخصوص + تقدير", ex: ["about you = عنك", "about ten = حوالي عشرة", "what about = ماذا عن"], tip: "للموضوع والتقريب", scene: "📍 بخصوص شيء" },
+                    { term: "really", ar: "حقاً / فعلاً", awbw: "تأكيد", ex: ["really good = جيد حقاً", "really? = حقاً؟", "not really = ليس فعلاً"], tip: "للتأكيد", scene: "💯 بصدق" },
+                    { term: "very", ar: "جداً", awbw: "مبالغة", ex: ["very good = جيد جداً", "very much = كثيراً جداً", "not very = ليس جداً"], tip: "لتقوية الصفة", scene: "🔝 بدرجة عالية" },
+                    { term: "too", ar: "أيضاً / كثيراً جداً", awbw: "زيادة", ex: ["me too = أنا أيضاً", "too much = كثير جداً", "too hard = صعب جداً"], tip: "للإضافة والمبالغة", scene: "➕ كذلك / بإفراط" },
+                    { term: "just", ar: "فقط / للتو", awbw: "حصر + حداثة", ex: ["just now = للتو", "just one = واحد فقط", "just kidding = أمزح فقط"], tip: "للحصر والقرب الزمني", scene: "⏱️ منذ لحظة" },
+                    { term: "more", ar: "أكثر", awbw: "زيادة", ex: ["more please = المزيد رجاءً", "one more = واحد آخر", "more or less = تقريباً"], tip: "للمقارنة والزيادة", scene: "📈 كمية أكبر" },
+                    { term: "most", ar: "معظم / الأكثر", awbw: "الأعلى", ex: ["most people = معظم الناس", "the most = الأكثر", "most of all = أكثر شيء"], tip: "للأغلبية والتفضيل", scene: "🔝 الغالبية" }
+                ]
+            }
+        };
+
+        // دوال تثبيت الكلمات الأساسية
+        function installCoreVocabUnit(unitKey) {
+            const unit = CORE_VOCAB_2080[unitKey];
+            if (!unit) return { added: 0 };
+            const catName = unit.emoji + ' ' + unit.title;
+            if (!categories.includes(catName)) { categories.push(catName); saveCats(); }
+            const existing = new Set(words.filter(w => w.c === catName).map(w => w.w));
+            let added = 0;
+            unit.cards.forEach(item => {
+                if (existing.has(item.term)) return;
+                words.push({
+                    w: item.term, m: item.ar, c: catName, qType: 'basic',
+                    arWordByWord: item.awbw, examples: item.ex, memoryTip: item.tip,
+                    categoryLabel: item.scene || unit.title, sceneContext: item.scene,
+                    level: unit.level, frequency: '⭐⭐⭐⭐⭐',
+                    intervalIdx: 0, nextReview: Date.now(), ef: 2.5,
+                    reps: 0, lapses: 0, stability: 0, difficulty: 5
+                });
+                added++;
+            });
+            saveWords();
+            return { added: added, catName: catName, unitTitle: unit.title };
+        }
+
+        function installFullCoreVocab() {
+            let totalAdded = 0;
+            const installedUnits = [];
+            Object.keys(CORE_VOCAB_2080).forEach(function(unitKey) {
+                const result = installCoreVocabUnit(unitKey);
+                totalAdded += result.added;
+                if (result.added > 0) installedUnits.push(result.unitTitle);
+            });
+            if (typeof refreshAllSettings === 'function') refreshAllSettings();
+            if (typeof updateHeroStats === 'function') updateHeroStats();
+            showToast('🎯 تم تثبيت ' + totalAdded + ' كلمة أساسية!');
+            return { totalAdded: totalAdded, units: installedUnits.length };
+        }
+
+        // متصفّح الكلمات الأساسية
+        function openCoreVocabBrowser() {
+            var existing = document.getElementById('corevocab-modal');
+            if (existing) existing.remove();
+            var modal = document.createElement('div');
+            modal.id = 'corevocab-modal';
+            modal.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:9999; display:flex; align-items:flex-end;';
+            modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+
+            var units = Object.entries(CORE_VOCAB_2080);
+            var totalCards = 0;
+            units.forEach(function(pair) { totalCards += pair[1].cards.length; });
+
+            var unitsHtml = '';
+            units.forEach(function(pair) {
+                var key = pair[0];
+                var unit = pair[1];
+                var isInstalled = categories.includes(unit.emoji + ' ' + unit.title);
+                var btnBg = isInstalled ? 'rgba(78,205,196,0.10)' : 'linear-gradient(135deg, var(--green), var(--cyan))';
+                var btnColor = isInstalled ? 'var(--green)' : 'white';
+                var btnBorder = isInstalled ? '1px solid var(--green)' : 'none';
+                var btnText = isInstalled ? '✓ مُثبّتة - أعد التثبيت' : '⬇️ ثبّت هذه الوحدة';
+                var borderColor = isInstalled ? 'var(--green)' : 'var(--border)';
+                unitsHtml += '<div style="padding:14px; background:rgba(255,255,255,0.03); border:1px solid ' + borderColor + '; border-radius:12px; margin-bottom:10px;">'
+                    + '<div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">'
+                    + '<div style="width:44px; height:44px; background:linear-gradient(135deg, var(--green), var(--cyan)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px;">' + unit.emoji + '</div>'
+                    + '<div style="flex:1;">'
+                    + '<div style="font-size:14px; font-weight:700; color:var(--text);">' + escapeHtml(unit.title) + '</div>'
+                    + '<div style="font-size:11px; color:var(--text-muted); margin-top:2px;">' + escapeHtml(unit.titleEn) + ' · ' + unit.level + '</div>'
+                    + '</div>'
+                    + '<span style="padding:3px 8px; background:rgba(78,205,196,0.15); color:var(--green); border-radius:8px; font-size:10px; font-weight:700;">' + unit.cards.length + ' كلمة</span>'
+                    + '</div>'
+                    + '<div style="font-size:11px; color:var(--text-muted); line-height:1.6; margin-bottom:10px;">📍 ' + escapeHtml(unit.description) + '</div>'
+                    + '<div style="display:flex; gap:6px;">'
+                    + '<button onclick="coreVocabInstallUnit(\'' + key + '\')" style="flex:1; padding:10px; background:' + btnBg + '; color:' + btnColor + '; border:' + btnBorder + '; border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px;">'
+                    + btnText + '</button>'
+                    + '<button onclick="printOneUnit(\'CORE_VOCAB_2080\', \'' + key + '\')" style="padding:10px 14px; background:rgba(138,79,255,0.12); color:var(--violet); border:1px solid var(--violet); border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px; white-space:nowrap;">🖨️ طباعة</button>'
+                    + '</div></div>';
+            });
+
+            var h = '<div style="background:var(--card-bg); border-radius:16px 16px 0 0; max-width:480px; width:100%; margin:auto auto 0; max-height:92vh; display:flex; flex-direction:column;">'
+                + '<div style="padding:16px 20px; border-bottom:1px solid var(--border); background:linear-gradient(135deg, rgba(78,205,196,0.10), rgba(0,212,255,0.10));">'
+                + '<div style="display:flex; justify-content:space-between; align-items:center;">'
+                + '<div><div style="font-size:17px; font-weight:700; color:var(--text);">🎯 الكلمات الأساسية</div>'
+                + '<div style="font-size:11px; color:var(--text-muted); margin-top:3px;">قاعدة 20/80 - أكثر الكلمات شيوعاً</div></div>'
+                + '<button onclick="document.getElementById(\'corevocab-modal\').remove()" style="background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--text); width:32px; height:32px; border-radius:8px; cursor:pointer;">✕</button>'
+                + '</div></div>'
+                + '<div style="flex:1; overflow-y:auto; padding:16px 20px;">'
+                + '<div style="padding:14px; background:rgba(78,205,196,0.06); border:1px solid rgba(78,205,196,0.25); border-radius:12px; margin-bottom:16px;">'
+                + '<div style="font-size:12px; color:var(--text); line-height:1.9;">'
+                + '🧠 <b>قاعدة 20/80:</b> أكثر 20% من الكلمات تغطي 80% من الكلام<br>'
+                + '⭐ هذه الكلمات تتكرر في <b>كل جملة</b> تقريباً<br>'
+                + '🎯 <b>' + totalCards + ' كلمة</b> · ابدأ بها قبل أي شيء آخر</div></div>'
+                + '<button onclick="coreVocabInstallAll()" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--green), var(--cyan)); color:white; border:none; border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:8px;">⬇️ ثبّت كل الكلمات الأساسية (' + totalCards + ')</button>'
+                + '<button onclick="printFullCurriculum(\'CORE_VOCAB_2080\')" style="width:100%; padding:13px; background:rgba(138,79,255,0.10); color:var(--violet); border:1px solid var(--violet); border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:16px;">🖨️ طباعة الكل (بلا تثبيت)</button>'
+                + unitsHtml
+                + '</div>'
+                + '<div style="padding:14px 20px; border-top:1px solid var(--border);">'
+                + '<button onclick="document.getElementById(\'corevocab-modal\').remove()" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); color:var(--text-muted); border:1px solid var(--border); border-radius:10px; font-family:Cairo; font-weight:700; cursor:pointer;">إغلاق</button>'
+                + '</div></div>';
+
+            modal.innerHTML = h;
+            document.body.appendChild(modal);
+        }
+
+        function coreVocabInstallUnit(key) {
+            var r = installCoreVocabUnit(key);
+            showToast('✅ تم تثبيت ' + r.added + ' كلمة');
+            openCoreVocabBrowser();
+        }
+        function coreVocabInstallAll() {
+            installFullCoreVocab();
+            var m = document.getElementById('corevocab-modal');
+            if (m) m.remove();
+        }
+
+
+
+        // ═══════════════════════════════════════════════════════════════
+        // 📐 القواعد الأساسية (قاعدة 20/80)
+        // ═══════════════════════════════════════════════════════════════
+        // أهم الأنماط النحوية - تغطي 80% من الكلام الصحيح
+        // فلسفة الكتل: افهم النمط، شاهد أمثلة، طبّق - لا حفظ جاف
+        // ═══════════════════════════════════════════════════════════════
+        const GRAMMAR_2080 = {
+            gram_present: {
+                title: "المضارع (الحاضر)",
+                titleEn: "Present Tense",
+                emoji: "⏱️",
+                level: "A1",
+                phase: "القواعد · الأزمنة الأساسية",
+                description: "كيف تتكلم عن الحاضر والعادات",
+                scene: "تصف ما تفعله الآن أو دائماً",
+                cards: [
+                    { term: "I work / She works", ar: "المضارع البسيط: للعادات والحقائق", awbw: "أضف s مع he/she/it فقط", ex: ["I work every day = أعمل كل يوم", "She works hard = تعمل بجد", "They play football = يلعبون كرة", "He lives in Riyadh = يعيش في الرياض", "We speak Arabic = نتكلم العربية", "The sun rises = الشمس تشرق", "Cats like milk = القطط تحب الحليب"], tip: "القاعدة الذهبية: he/she/it + فعل+s", scene: "🔁 عادة أو حقيقة دائمة" },
+                    { term: "I am working", ar: "المضارع المستمر: لما يحدث الآن", awbw: "am/is/are + فعل+ing", ex: ["I am eating now = آكل الآن", "She is sleeping = هي نائمة", "We are studying = ندرس", "They are playing = يلعبون الآن", "He is working = يعمل الآن", "It is raining = إنها تمطر", "You are reading = أنت تقرأ"], tip: "للفعل الجاري هذه اللحظة: be + ing", scene: "▶️ يحدث الآن" },
+                    { term: "Do you work?", ar: "السؤال في المضارع", awbw: "Do/Does + فاعل + فعل", ex: ["Do you know? = هل تعرف؟", "Does she work? = هل تعمل؟", "Do they play? = هل يلعبون؟", "Does he live here? = هل يعيش هنا؟", "Do we need it? = هل نحتاجه؟", "Does it work? = هل يعمل؟", "Where do you live? = أين تعيش؟"], tip: "Does مع he/she/it، Do مع الباقي", scene: "❓ تسأل عن عادة" },
+                    { term: "I don't work", ar: "النفي في المضارع", awbw: "don't/doesn't + فعل", ex: ["I don't know = لا أعرف", "She doesn't work = لا تعمل", "We don't play = لا نلعب", "He doesn't like it = لا يحبه", "They don't speak English = لا يتكلمون الإنجليزية", "It doesn't matter = لا يهم", "You don't need this = لا تحتاج هذا"], tip: "doesn't مع he/she/it، don't مع الباقي", scene: "🚫 تنفي عادة" }
+                ]
+            },
+            gram_past: {
+                title: "الماضي",
+                titleEn: "Past Tense",
+                emoji: "⏮️",
+                level: "A1",
+                phase: "القواعد · الأزمنة الأساسية",
+                description: "كيف تتكلم عمّا حدث وانتهى",
+                scene: "تحكي عن أحداث ماضية",
+                cards: [
+                    { term: "I worked / I went", ar: "الماضي البسيط: لما حدث وانتهى", awbw: "أضف ed للأفعال العادية", ex: ["I worked yesterday = عملت أمس", "She played = لعبت", "We watched TV = شاهدنا التلفاز", "They called me = اتصلوا بي", "He opened the door = فتح الباب", "It rained last night = أمطرت ليلة أمس", "I finished my work = أنهيت عملي"], tip: "الأفعال العادية + ed، والشاذة تتغير", scene: "✅ حدث وانتهى" },
+                    { term: "went, ate, saw", ar: "الأفعال الشاذة (تتغير تماماً)", awbw: "go→went, eat→ate, see→saw", ex: ["I went home = ذهبت للبيت", "She ate food = أكلت", "We saw it = رأيناه", "He took it = أخذه", "They came late = جاؤوا متأخرين", "I made tea = صنعت شاياً", "She gave me a gift = أعطتني هدية"], tip: "احفظها كما هي - لا قاعدة لها", scene: "⚡ أفعال خاصة" },
+                    { term: "Did you work?", ar: "السؤال في الماضي", awbw: "Did + فاعل + فعل (أصلي)", ex: ["Did you go? = هل ذهبت؟", "Did she eat? = هل أكلت؟", "Did they win? = هل فازوا؟", "Did he call? = هل اتصل؟", "Where did you go? = أين ذهبت؟", "Did it work? = هل نجح؟", "What did you say? = ماذا قلت؟"], tip: "بعد Did الفعل يرجع أصلياً (go لا went)", scene: "❓ تسأل عن الماضي" },
+                    { term: "I didn't work", ar: "النفي في الماضي", awbw: "didn't + فعل (أصلي)", ex: ["I didn't go = لم أذهب", "She didn't eat = لم تأكل", "We didn't see = لم نرَ", "He didn't come = لم يأتِ", "They didn't know = لم يعرفوا", "It didn't work = لم ينجح", "I didn't say that = لم أقل ذلك"], tip: "بعد didn't الفعل أصلي (go لا went)", scene: "🚫 تنفي حدثاً ماضياً" }
+                ]
+            },
+            gram_future: {
+                title: "المستقبل",
+                titleEn: "Future Tense",
+                emoji: "⏭️",
+                level: "A2",
+                phase: "القواعد · الأزمنة الأساسية",
+                description: "كيف تتكلم عمّا سيحدث",
+                scene: "تخطط أو تتوقع المستقبل",
+                cards: [
+                    { term: "I will work", ar: "will: لقرار لحظي أو توقع", awbw: "will + فعل (أصلي)", ex: ["I will help = سأساعد", "She will come = ستأتي", "It will rain = ستمطر", "They will win = سيفوزون", "I'll call you = سأتصل بك", "He will be late = سيتأخر", "We will see = سنرى"], tip: "will للمستقبل العام والقرارات الفورية", scene: "🔮 قرار أو توقع" },
+                    { term: "I am going to work", ar: "going to: لخطة مُسبقة", awbw: "am/is/are going to + فعل", ex: ["I'm going to study = سأدرس (مخطط)", "She's going to travel = ستسافر", "We're going to win = سنفوز", "They're going to move = سينتقلون", "He's going to buy a car = سيشتري سيارة", "It's going to rain = ستمطر", "I'm going to sleep = سأنام"], tip: "going to لما خططت له مسبقاً", scene: "📅 خطة مدبّرة" },
+                    { term: "Will you work?", ar: "السؤال في المستقبل", awbw: "Will + فاعل + فعل", ex: ["Will you come? = هل ستأتي؟", "Will it work? = هل سينجح؟", "Will they help? = هل سيساعدون؟", "Will she be there? = هل ستكون هناك؟", "When will you arrive? = متى ستصل؟", "Will he call? = هل سيتصل؟", "What will happen? = ماذا سيحدث؟"], tip: "Will في البداية للسؤال", scene: "❓ تسأل عن المستقبل" },
+                    { term: "I won't work", ar: "النفي في المستقبل", awbw: "won't (will not) + فعل", ex: ["I won't go = لن أذهب", "She won't come = لن تأتي", "It won't work = لن ينجح", "They won't agree = لن يوافقوا", "I won't forget = لن أنسى", "He won't be late = لن يتأخر", "We won't lose = لن نخسر"], tip: "won't اختصار will not", scene: "🚫 تنفي المستقبل" }
+                ]
+            },
+            gram_sentence: {
+                title: "بناء الجملة",
+                titleEn: "Sentence Structure",
+                emoji: "🧱",
+                level: "A1",
+                phase: "القواعد · الأساس",
+                description: "ترتيب الكلمات الصحيح في الجملة",
+                scene: "تركّب جملة سليمة",
+                cards: [
+                    { term: "Subject + Verb + Object", ar: "الترتيب الأساسي: فاعل+فعل+مفعول", awbw: "من يفعل + الفعل + على ماذا", ex: ["I eat apples = أنا آكل تفاحاً", "She reads books = تقرأ كتباً", "They play games = يلعبون ألعاباً", "He drives a car = يقود سيارة", "We love music = نحب الموسيقى", "The cat caught a mouse = القطة أمسكت فأراً", "Students study English = الطلاب يدرسون الإنجليزية"], tip: "الإنجليزية دائماً: فاعل ثم فعل ثم مفعول", scene: "🧱 العمود الفقري للجملة" },
+                    { term: "a / an / the", ar: "أدوات التعريف والتنكير", awbw: "a/an للنكرة، the للمعرفة", ex: ["a book = كتاب (أي كتاب)", "an apple = تفاحة (تبدأ بحرف علة)", "the book = الكتاب (المحدد)", "a dog = كلب", "an hour = ساعة", "the sun = الشمس", "an idea = فكرة"], tip: "an قبل a,e,i,o,u — the للمعروف", scene: "📌 تحدد الاسم" },
+                    { term: "Adjective + Noun", ar: "الصفة قبل الموصوف", awbw: "عكس العربية: الصفة أولاً", ex: ["a big house = بيت كبير", "red car = سيارة حمراء", "good idea = فكرة جيدة", "a beautiful girl = فتاة جميلة", "cold water = ماء بارد", "an old man = رجل عجوز", "happy children = أطفال سعداء"], tip: "بالإنجليزية الصفة قبل الاسم (big house لا house big)", scene: "🎨 تصف شيئاً" },
+                    { term: "There is / There are", ar: "للدلالة على وجود شيء", awbw: "is للمفرد، are للجمع", ex: ["There is a cat = يوجد قطة", "There are books = توجد كتب", "Is there water? = هل يوجد ماء؟", "There are many people = يوجد أناس كثيرون", "There is a problem = توجد مشكلة", "Are there any questions? = هل توجد أسئلة؟", "There isn't time = لا يوجد وقت"], tip: "There is + مفرد، There are + جمع", scene: "📍 تثبت وجود شيء" }
+                ]
+            },
+            gram_essentials: {
+                title: "أساسيات لا غنى عنها",
+                titleEn: "Must-Know Basics",
+                emoji: "🔑",
+                level: "A2",
+                phase: "القواعد · الأساس",
+                description: "قواعد صغيرة تظهر في كل جملة",
+                scene: "تفاصيل تصنع الفرق",
+                cards: [
+                    { term: "can / can't", ar: "للقدرة والإمكانية", awbw: "can + فعل (أصلي)", ex: ["I can swim = أستطيع السباحة", "She can't come = لا تستطيع المجيء", "Can you help? = هل تستطيع المساعدة؟", "He can speak English = يستطيع التكلم بالإنجليزية", "We can't wait = لا نستطيع الانتظار", "Can I ask? = هل أستطيع السؤال؟", "They can do it = يستطيعون فعلها"], tip: "can + فعل أصلي دائماً (can swim لا can to swim)", scene: "💪 تعبّر عن قدرة" },
+                    { term: "have to / must", ar: "للضرورة والوجوب", awbw: "have to / must + فعل", ex: ["I have to go = يجب أن أذهب", "You must stop = يجب أن تتوقف", "She has to work = عليها العمل", "We must be careful = يجب أن نحذر", "I have to study = عليّ الدراسة", "You must try = يجب أن تحاول", "He has to leave = عليه المغادرة"], tip: "للالتزام والضرورة", scene: "❗ تعبّر عن وجوب" },
+                    { term: "this / that / these / those", ar: "أسماء الإشارة", awbw: "this/that مفرد، these/those جمع", ex: ["this book = هذا الكتاب (قريب)", "that car = تلك السيارة (بعيد)", "these things = هذه الأشياء", "those people = أولئك الناس", "this is mine = هذا لي", "that's right = ذلك صحيح", "these are good = هذه جيدة"], tip: "this قريب، that بعيد + جمعهما these/those", scene: "👉 تشير لشيء" },
+                    { term: "my / your / his / her", ar: "ضمائر الملكية", awbw: "تسبق الاسم المملوك", ex: ["my book = كتابي", "your car = سيارتك", "her bag = حقيبتها", "his name = اسمه", "our house = بيتنا", "their car = سيارتهم", "its color = لونه"], tip: "تأتي قبل الاسم مباشرة", scene: "🤲 تبيّن الملكية" },
+                    { term: "in / on / at", ar: "حروف الجر للمكان والزمان", awbw: "in داخل، on على، at عند", ex: ["in the box = في الصندوق", "on the table = على الطاولة", "at home = في البيت", "in the morning = في الصباح", "on Monday = يوم الإثنين", "at 5 o'clock = الساعة الخامسة", "in Riyadh = في الرياض"], tip: "in للأماكن المغلقة، on للأسطح، at للنقاط المحددة", scene: "📍 تحدد مكاناً/زماناً" },
+                    { term: "and / but / or", ar: "أدوات الربط الأساسية", awbw: "and إضافة، but تعارض، or خيار", ex: ["tea and coffee = شاي وقهوة", "good but expensive = جيد لكن غالٍ", "this or that = هذا أو ذاك", "you and me = أنا وأنت", "small but strong = صغير لكن قوي", "now or later = الآن أو لاحقاً", "slow and steady = ببطء وثبات"], tip: "and يجمع، but يعارض، or يخيّر", scene: "🔗 تربط الأفكار" }
+                ]
+            }
+        };
+
+        // دوال تثبيت القواعد
+        function installGrammarUnit(unitKey) {
+            const unit = GRAMMAR_2080[unitKey];
+            if (!unit) return { added: 0 };
+            const catName = unit.emoji + ' ' + unit.title;
+            if (!categories.includes(catName)) { categories.push(catName); saveCats(); }
+            const existing = new Set(words.filter(w => w.c === catName).map(w => w.w));
+            let added = 0;
+            unit.cards.forEach(item => {
+                if (existing.has(item.term)) return;
+                words.push({
+                    w: item.term, m: item.ar, c: catName, qType: 'basic',
+                    arWordByWord: item.awbw, examples: item.ex, memoryTip: item.tip,
+                    categoryLabel: item.scene || unit.title, sceneContext: item.scene,
+                    level: unit.level, frequency: '⭐⭐⭐⭐⭐',
+                    intervalIdx: 0, nextReview: Date.now(), ef: 2.5,
+                    reps: 0, lapses: 0, stability: 0, difficulty: 5
+                });
+                added++;
+            });
+            saveWords();
+            return { added: added, catName: catName, unitTitle: unit.title };
+        }
+
+        function installFullGrammar() {
+            let totalAdded = 0;
+            const installedUnits = [];
+            Object.keys(GRAMMAR_2080).forEach(function(unitKey) {
+                const result = installGrammarUnit(unitKey);
+                totalAdded += result.added;
+                if (result.added > 0) installedUnits.push(result.unitTitle);
+            });
+            if (typeof refreshAllSettings === 'function') refreshAllSettings();
+            if (typeof updateHeroStats === 'function') updateHeroStats();
+            showToast('📐 تم تثبيت ' + totalAdded + ' قاعدة!');
+            return { totalAdded: totalAdded, units: installedUnits.length };
+        }
+
+        // متصفّح القواعد
+        function openGrammarBrowser() {
+            var existing = document.getElementById('grammar-modal');
+            if (existing) existing.remove();
+            var modal = document.createElement('div');
+            modal.id = 'grammar-modal';
+            modal.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:9999; display:flex; align-items:flex-end;';
+            modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+
+            var units = Object.entries(GRAMMAR_2080);
+            var totalCards = 0;
+            units.forEach(function(pair) { totalCards += pair[1].cards.length; });
+
+            var phases = {};
+            units.forEach(function(pair) {
+                var u = pair[1];
+                if (!phases[u.phase]) phases[u.phase] = [];
+                phases[u.phase].push(pair);
+            });
+
+            var phasesHtml = '';
+            Object.keys(phases).forEach(function(phaseName) {
+                var phaseUnits = phases[phaseName];
+                var unitsHtml = '';
+                phaseUnits.forEach(function(pair) {
+                    var key = pair[0];
+                    var unit = pair[1];
+                    var isInstalled = categories.includes(unit.emoji + ' ' + unit.title);
+                    var btnBg = isInstalled ? 'rgba(78,205,196,0.10)' : 'linear-gradient(135deg, var(--violet), var(--orange))';
+                    var btnColor = isInstalled ? 'var(--green)' : 'white';
+                    var btnBorder = isInstalled ? '1px solid var(--green)' : 'none';
+                    var btnText = isInstalled ? '✓ مُثبّتة - أعد التثبيت' : '⬇️ ثبّت هذه القاعدة';
+                    var borderColor = isInstalled ? 'var(--green)' : 'var(--border)';
+                    unitsHtml += '<div style="padding:14px; background:rgba(255,255,255,0.03); border:1px solid ' + borderColor + '; border-radius:12px;">'
+                        + '<div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">'
+                        + '<div style="width:44px; height:44px; background:linear-gradient(135deg, var(--violet), var(--orange)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px;">' + unit.emoji + '</div>'
+                        + '<div style="flex:1;">'
+                        + '<div style="font-size:14px; font-weight:700; color:var(--text);">' + escapeHtml(unit.title) + '</div>'
+                        + '<div style="font-size:11px; color:var(--text-muted); margin-top:2px;">' + escapeHtml(unit.titleEn) + ' · ' + unit.level + '</div>'
+                        + '</div>'
+                        + '<span style="padding:3px 8px; background:rgba(138,79,255,0.15); color:var(--violet); border-radius:8px; font-size:10px; font-weight:700;">' + unit.cards.length + ' قاعدة</span>'
+                        + '</div>'
+                        + '<div style="font-size:11px; color:var(--text-muted); line-height:1.6; margin-bottom:10px;">📍 ' + escapeHtml(unit.description) + '</div>'
+                        + '<div style="display:flex; gap:6px;">'
+                        + '<button onclick="grammarInstallUnit(\'' + key + '\')" style="flex:1; padding:10px; background:' + btnBg + '; color:' + btnColor + '; border:' + btnBorder + '; border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px;">'
+                        + btnText + '</button>'
+                        + '<button onclick="printOneUnit(\'GRAMMAR_2080\', \'' + key + '\')" style="padding:10px 14px; background:rgba(138,79,255,0.12); color:var(--violet); border:1px solid var(--violet); border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px; white-space:nowrap;">🖨️ طباعة</button>'
+                        + '</div></div>';
+                });
+                phasesHtml += '<div style="margin-bottom:18px;">'
+                    + '<div style="font-size:12px; font-weight:700; color:var(--violet); margin-bottom:10px; padding:6px 12px; background:rgba(138,79,255,0.08); border-radius:8px; display:inline-block;">📐 ' + escapeHtml(phaseName) + '</div>'
+                    + '<div style="display:flex; flex-direction:column; gap:10px;">' + unitsHtml + '</div></div>';
+            });
+
+            var h = '<div style="background:var(--card-bg); border-radius:16px 16px 0 0; max-width:480px; width:100%; margin:auto auto 0; max-height:92vh; display:flex; flex-direction:column;">'
+                + '<div style="padding:16px 20px; border-bottom:1px solid var(--border); background:linear-gradient(135deg, rgba(138,79,255,0.10), rgba(255,159,67,0.10));">'
+                + '<div style="display:flex; justify-content:space-between; align-items:center;">'
+                + '<div><div style="font-size:17px; font-weight:700; color:var(--text);">📐 القواعد الأساسية</div>'
+                + '<div style="font-size:11px; color:var(--text-muted); margin-top:3px;">قاعدة 20/80 - الأنماط التي تغطي معظم الكلام</div></div>'
+                + '<button onclick="document.getElementById(\'grammar-modal\').remove()" style="background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--text); width:32px; height:32px; border-radius:8px; cursor:pointer;">✕</button>'
+                + '</div></div>'
+                + '<div style="flex:1; overflow-y:auto; padding:16px 20px;">'
+                + '<div style="padding:14px; background:rgba(138,79,255,0.06); border:1px solid rgba(138,79,255,0.25); border-radius:12px; margin-bottom:16px;">'
+                + '<div style="font-size:12px; color:var(--text); line-height:1.9;">'
+                + '🧠 <b>ليست قواعد جافة</b> - كل قاعدة بنمط وأمثلة حيّة<br>'
+                + '⚡ <b>أهم الأنماط فقط:</b> الأزمنة، بناء الجملة، الأساسيات<br>'
+                + '🎯 <b>' + totalCards + ' قاعدة</b> تغطي 80% من الكلام الصحيح</div></div>'
+                + '<button onclick="grammarInstallAll()" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--violet), var(--orange)); color:white; border:none; border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:8px;">⬇️ ثبّت كل القواعد (' + totalCards + ')</button>'
+                + '<button onclick="printFullCurriculum(\'GRAMMAR_2080\')" style="width:100%; padding:13px; background:rgba(138,79,255,0.10); color:var(--violet); border:1px solid var(--violet); border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:16px;">🖨️ طباعة كل القواعد (بلا تثبيت)</button>'
+                + phasesHtml
+                + '</div>'
+                + '<div style="padding:14px 20px; border-top:1px solid var(--border);">'
+                + '<button onclick="document.getElementById(\'grammar-modal\').remove()" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); color:var(--text-muted); border:1px solid var(--border); border-radius:10px; font-family:Cairo; font-weight:700; cursor:pointer;">إغلاق</button>'
+                + '</div></div>';
+
+            modal.innerHTML = h;
+            document.body.appendChild(modal);
+        }
+
+        function grammarInstallUnit(key) {
+            var r = installGrammarUnit(key);
+            showToast('✅ تم تثبيت ' + r.added + ' قاعدة');
+            openGrammarBrowser();
+        }
+        function grammarInstallAll() {
+            installFullGrammar();
+            var m = document.getElementById('grammar-modal');
+            if (m) m.remove();
+        }
+
+
+
+        // ═══════════════════════════════════════════════════════════════
+        // 🖨️ الطباعة المباشرة (بلا تثبيت)
+        // ═══════════════════════════════════════════════════════════════
+        // يطبع أي وحدة منهج مباشرة من متصفّحها - بلا حاجة لتثبيتها أولاً
+        // يعيد استخدام تنسيق الطباعة الموجود
+        // ═══════════════════════════════════════════════════════════════
+
+        // يطبّع بنية أي بطاقة (مثبّتة w/m أو منهج term/ar)
+        function normalizeCardForPrint(c) {
+            return {
+                w: c.w || c.term || '',
+                m: c.m || c.ar || '',
+                arWordByWord: c.arWordByWord || c.awbw || '',
+                examples: c.examples || c.ex || [],
+                memoryTip: c.memoryTip || c.tip || ''
+            };
+        }
+
+        // يبني HTML الطباعة لمجموعة وحدات [{title, cards}]
+        function buildDirectPrintHtml(unitsArray, isWriteMode) {
+            var today = new Date().toLocaleDateString('ar-SA');
+            var html = '<!DOCTYPE html><html dir="rtl" lang="ar"><head><meta charset="UTF-8">';
+            html += '<title>منهج إتقان - أحمد الزهراني</title>';
+            html += '<style>';
+            html += '@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap");';
+            html += '* { margin:0; padding:0; box-sizing:border-box; font-family:Cairo, Arial, sans-serif; }';
+            html += 'body { padding:20px 28px; color:#1a1a1a; line-height:1.6; }';
+            html += '.header { text-align:center; padding:20px 0; border-bottom:3px solid #8a4fff; margin-bottom:24px; }';
+            html += '.header h1 { font-size:24px; color:#8a4fff; margin-bottom:6px; }';
+            html += '.header .sub { font-size:13px; color:#666; }';
+            html += '.unit { margin-bottom:28px; page-break-inside:avoid; }';
+            html += '.unit-title { font-size:18px; font-weight:700; color:#fff; background:linear-gradient(135deg, #8a4fff, #00d4ff); padding:10px 16px; border-radius:8px; margin-bottom:14px; }';
+            html += '.card { padding:12px 16px; border:1px solid #ddd; border-radius:8px; margin-bottom:10px; page-break-inside:avoid; }';
+            html += '.card-term { font-size:17px; font-weight:700; color:#1a1a1a; direction:ltr; text-align:left; margin-bottom:4px; }';
+            html += '.card-meaning { font-size:14px; color:#8a4fff; font-weight:600; margin-bottom:6px; }';
+            html += '.card-awbw { font-size:12px; color:#666; margin-bottom:6px; font-style:italic; }';
+            html += '.card-ex { font-size:13px; color:#333; direction:ltr; text-align:left; padding:3px 0; border-top:1px dashed #eee; margin-top:4px; }';
+            html += '.card-tip { font-size:12px; color:#e67e22; margin-top:6px; }';
+            html += '.write-line { border-bottom:1.5px solid #bbb; height:26px; margin:8px 0; }';
+            html += '.write-label { font-size:11px; color:#999; }';
+            html += '.footer { text-align:center; margin-top:30px; padding-top:16px; border-top:2px solid #ddd; font-size:11px; color:#999; }';
+            html += '@media print { body { padding:12px; } .unit { page-break-inside:avoid; } }';
+            html += '</style></head><body>';
+
+            html += '<div class="header"><h1>📚 منهج إتقان الإنجليزية</h1>';
+            html += '<div class="sub">م. أحمد عطية الزهراني — جامعة الباحة · ' + today + '</div></div>';
+
+            unitsArray.forEach(function(unit) {
+                var cards = (unit.cards || []).map(normalizeCardForPrint);
+                if (cards.length === 0) return;
+                html += '<div class="unit">';
+                html += '<div class="unit-title">' + escapeHtmlPrint(unit.title) + ' (' + cards.length + ' كتلة)</div>';
+                cards.forEach(function(card) {
+                    html += '<div class="card">';
+                    html += '<div class="card-term">' + escapeHtmlPrint(card.w) + '</div>';
+                    if (isWriteMode) {
+                        html += '<div class="card-meaning">' + escapeHtmlPrint(card.m) + '</div>';
+                        html += '<div class="write-label">اكتب الكلمة 3 مرات:</div>';
+                        html += '<div class="write-line"></div>';
+                        html += '<div class="write-label">اكتب جملة من عندك:</div>';
+                        html += '<div class="write-line"></div>';
+                    } else {
+                        html += '<div class="card-meaning">' + escapeHtmlPrint(card.m) + '</div>';
+                        if (card.arWordByWord) html += '<div class="card-awbw">' + escapeHtmlPrint(card.arWordByWord) + '</div>';
+                        if (card.examples && card.examples.length > 0) {
+                            card.examples.forEach(function(ex) {
+                                html += '<div class="card-ex">• ' + escapeHtmlPrint(ex) + '</div>';
+                            });
+                        }
+                        if (card.memoryTip) html += '<div class="card-tip">💡 ' + escapeHtmlPrint(card.memoryTip) + '</div>';
+                    }
+                    html += '</div>';
+                });
+                html += '</div>';
+            });
+
+            html += '<div class="footer">Ahmed SRS Pro © 2026 — طريقك نحو الإتقان</div>';
+            html += '</body></html>';
+            return html;
+        }
+
+        // ينفّذ الطباعة في نافذة جديدة
+        function executeDirectPrint(unitsArray, isWriteMode) {
+            var printHtml = buildDirectPrintHtml(unitsArray, isWriteMode);
+            var win = window.open('', '_blank');
+            if (!win) {
+                showToast('السماح بالنوافذ المنبثقة مطلوب / Allow popups');
+                return;
+            }
+            win.document.write(printHtml);
+            win.document.close();
+            setTimeout(function() { win.print(); }, 500);
+        }
+
+        // خريطة المناهج (const لا تصبح window properties، فنربطها يدوياً)
+        function getCurriculumByKey(curriculumKey) {
+            switch (curriculumKey) {
+                case 'ENGLISH_FAMILY_CURRICULUM': return (typeof ENGLISH_FAMILY_CURRICULUM !== 'undefined') ? ENGLISH_FAMILY_CURRICULUM : null;
+                case 'B1_BRIDGE_CURRICULUM': return (typeof B1_BRIDGE_CURRICULUM !== 'undefined') ? B1_BRIDGE_CURRICULUM : null;
+                case 'MASTERY_CURRICULUM': return (typeof MASTERY_CURRICULUM !== 'undefined') ? MASTERY_CURRICULUM : null;
+                case 'CORE_VOCAB_2080': return (typeof CORE_VOCAB_2080 !== 'undefined') ? CORE_VOCAB_2080 : null;
+                case 'GRAMMAR_2080': return (typeof GRAMMAR_2080 !== 'undefined') ? GRAMMAR_2080 : null;
+                case 'VOCAB_MASTERY': return (typeof VOCAB_MASTERY !== 'undefined') ? VOCAB_MASTERY : null;
+                case 'MAGIC_TOOLKIT': return (typeof MAGIC_TOOLKIT !== 'undefined') ? MAGIC_TOOLKIT : null;
+                default: return null;
+            }
+        }
+
+        // يسأل عن النوع (كامل/كتابة) ثم يطبع وحدة واحدة
+        function printOneUnit(curriculumKey, unitKey) {
+            var curr = getCurriculumByKey(curriculumKey);
+            if (!curr || !curr[unitKey]) { showToast('تعذّر العثور على الوحدة'); return; }
+            var unit = curr[unitKey];
+            showPrintTypeChooser([{ title: unit.emoji + ' ' + unit.title, cards: unit.cards }]);
+        }
+
+        // يطبع منهجاً كاملاً (كل وحداته)
+        function printFullCurriculum(curriculumKey) {
+            var curr = getCurriculumByKey(curriculumKey);
+            if (!curr) { showToast('تعذّر العثور على المنهج'); return; }
+            var units = Object.values(curr).map(function(u) {
+                return { title: u.emoji + ' ' + u.title, cards: u.cards };
+            });
+            showPrintTypeChooser(units);
+        }
+
+        // يطبع قسماً مثبّتاً (من categories) مباشرة
+        function printInstalledCategory(catName) {
+            var cards = words.filter(function(w) { return w.c === catName; });
+            if (cards.length === 0) { showToast('لا توجد بطاقات في هذا القسم'); return; }
+            showPrintTypeChooser([{ title: catName, cards: cards }]);
+        }
+
+        // نافذة صغيرة لاختيار نوع الطباعة (كامل / للكتابة)
+        function showPrintTypeChooser(unitsArray) {
+            var existing = document.getElementById('printtype-modal');
+            if (existing) existing.remove();
+            var modal = document.createElement('div');
+            modal.id = 'printtype-modal';
+            modal.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.88); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:10001; display:flex; align-items:center; justify-content:center; padding:20px;';
+            modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+
+            var totalCards = 0;
+            unitsArray.forEach(function(u) { totalCards += (u.cards || []).length; });
+
+            // خزّن مؤقتاً
+            window._printUnits = unitsArray;
+
+            var h = '<div style="background:var(--card-bg); border-radius:16px; max-width:360px; width:100%; padding:22px; border:1px solid var(--border);">'
+                + '<div style="text-align:center; margin-bottom:18px;">'
+                + '<div style="font-size:36px; margin-bottom:8px;">🖨️</div>'
+                + '<div style="font-size:17px; font-weight:700; color:var(--text);">طباعة ' + totalCards + ' كتلة</div>'
+                + '<div style="font-size:12px; color:var(--text-muted); margin-top:4px;">اختر نوع الطباعة</div>'
+                + '</div>'
+                + '<button onclick="doChosenPrint(false)" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--violet), var(--cyan)); color:white; border:none; border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:10px;">📄 كامل (مع الأمثلة)</button>'
+                + '<button onclick="doChosenPrint(true)" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--gold), var(--orange)); color:white; border:none; border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:14px;">✍️ للكتابة (فراغات)</button>'
+                + '<div style="font-size:10px; color:var(--text-muted); text-align:center; margin-bottom:14px; line-height:1.6;">📄 الكامل: للقراءة والمراجعة<br>✍️ الكتابة: فراغات تكتب فيها لحفظ أعمق</div>'
+                + '<button onclick="document.getElementById(\'printtype-modal\').remove()" style="width:100%; padding:10px; background:rgba(255,255,255,0.05); color:var(--text-muted); border:1px solid var(--border); border-radius:10px; font-family:Cairo; font-weight:700; cursor:pointer;">إلغاء</button>'
+                + '</div>';
+            modal.innerHTML = h;
+            document.body.appendChild(modal);
+        }
+
+        function doChosenPrint(isWriteMode) {
+            var units = window._printUnits || [];
+            var m = document.getElementById('printtype-modal');
+            if (m) m.remove();
+            executeDirectPrint(units, isWriteMode);
+        }
+
+
+
+        // ═══════════════════════════════════════════════════════════════
+        // 📚 أشهر الكلمات (Vocabulary Mastery) - محتوى لغوي موسّع
+        // ═══════════════════════════════════════════════════════════════
+        // الأفعال + الصفات + الأسماء الأكثر شيوعاً - كل بطاقة بأمثلة غنية
+        // قلب قاعدة 20/80 - تغطي معظم الكلام اليومي
+        // ═══════════════════════════════════════════════════════════════
+        const VOCAB_MASTERY = {
+            // ───────── الأفعال: الحركة والأفعال اليومية ─────────
+            vm_verbs_action: {
+                title: "أشهر الأفعال: الحركة والفعل",
+                titleEn: "Common Action Verbs",
+                emoji: "🏃",
+                level: "A1",
+                phase: "أشهر الكلمات · الأفعال",
+                description: "الأفعال التي تصف الحركة والأفعال اليومية",
+                scene: "كل ما تفعله في يومك",
+                cards: [
+                    { term: "open / close", ar: "يفتح / يغلق", awbw: "متضادان أساسيان", ex: ["open the door = افتح الباب", "close your eyes = أغلق عينيك", "the shop opens at 9 = المحل يفتح التاسعة", "close the window = أغلق النافذة", "it's open now = إنه مفتوح الآن"], tip: "open للفتح، close للإغلاق", scene: "🚪 فتح وإغلاق" },
+                    { term: "start / stop", ar: "يبدأ / يتوقف", awbw: "بداية ونهاية الفعل", ex: ["start now = ابدأ الآن", "stop talking = توقف عن الكلام", "the movie starts = الفيلم يبدأ", "don't stop = لا تتوقف", "let's start = هيا نبدأ"], tip: "start للبدء، stop للتوقف", scene: "▶️ بداية وتوقف" },
+                    { term: "buy / sell", ar: "يشتري / يبيع", awbw: "buy/bought, sell/sold", ex: ["buy some bread = اشترِ خبزاً", "they sell cars = يبيعون سيارات", "I bought it = اشتريته", "she sells flowers = تبيع أزهاراً", "buy one get one = اشترِ واحداً خذ آخر"], tip: "buy للشراء، sell للبيع", scene: "🛒 شراء وبيع" },
+                    { term: "give / take", ar: "يعطي / يأخذ", awbw: "give/gave, take/took", ex: ["give me water = أعطني ماء", "take this = خذ هذا", "she gave a gift = أعطت هدية", "take your time = خذ وقتك", "give it back = أعده"], tip: "give للإعطاء، take للأخذ", scene: "🤲 إعطاء وأخذ" },
+                    { term: "bring / send", ar: "يحضر / يرسل", awbw: "bring/brought, send/sent", ex: ["bring your book = أحضر كتابك", "send a message = أرسل رسالة", "I brought food = أحضرت طعاماً", "send it now = أرسله الآن", "bring it here = أحضره هنا"], tip: "bring للإحضار، send للإرسال", scene: "📦 إحضار وإرسال" },
+                    { term: "run / walk", ar: "يجري / يمشي", awbw: "run/ran, walk عادي", ex: ["I run every day = أجري كل يوم", "walk slowly = امشِ ببطء", "he ran fast = جرى بسرعة", "let's walk = هيا نمشي", "run to school = اجرِ للمدرسة"], tip: "run للجري، walk للمشي", scene: "🏃 جري ومشي" },
+                    { term: "put / keep", ar: "يضع / يحتفظ", awbw: "put/put, keep/kept", ex: ["put it down = ضعه", "keep it safe = احتفظ به آمناً", "I put it here = وضعته هنا", "keep quiet = ابقَ هادئاً", "put on your coat = ارتدِ معطفك"], tip: "put للوضع، keep للاحتفاظ", scene: "📥 وضع واحتفاظ" },
+                    { term: "turn / move", ar: "يدير / يتحرك", awbw: "turn للدوران، move للحركة", ex: ["turn left = انعطف يساراً", "move closer = اقترب", "turn it off = أطفئه", "don't move = لا تتحرك", "turn around = استدر"], tip: "turn للالتفاف، move للانتقال", scene: "🔄 دوران وحركة" },
+                    { term: "wait / hurry", ar: "ينتظر / يستعجل", awbw: "wait للانتظار، hurry للإسراع", ex: ["wait for me = انتظرني", "hurry up = أسرع", "wait a minute = انتظر دقيقة", "we must hurry = يجب أن نسرع", "I'm waiting = أنا أنتظر"], tip: "wait للانتظار، hurry للاستعجال", scene: "⏳ انتظار واستعجال" },
+                    { term: "help / try", ar: "يساعد / يحاول", awbw: "help للمساعدة، try للمحاولة", ex: ["help me please = ساعدني رجاءً", "try again = حاول ثانية", "can I help? = هل أساعد؟", "try your best = ابذل جهدك", "I'll help you = سأساعدك"], tip: "help للمساعدة، try للمحاولة", scene: "🤝 مساعدة ومحاولة" },
+                    { term: "show / tell", ar: "يُري / يخبر", awbw: "show/showed, tell/told", ex: ["show me how = أرني كيف", "tell me why = أخبرني لماذا", "she showed it = أرتها", "tell the truth = قل الحقيقة", "show your work = أظهر عملك"], tip: "show للإراءة، tell للإخبار", scene: "👁️ إظهار وإخبار" },
+                    { term: "win / lose", ar: "يفوز / يخسر", awbw: "win/won, lose/lost", ex: ["win the game = افز باللعبة", "don't lose hope = لا تفقد الأمل", "we won = فزنا", "I lost my keys = فقدت مفاتيحي", "win or lose = فوز أو خسارة"], tip: "win للفوز، lose للخسارة/الفقدان", scene: "🏆 فوز وخسارة" }
+                ]
+            },
+            // ───────── الأفعال: التفكير والشعور ─────────
+            vm_verbs_mind: {
+                title: "أشهر الأفعال: التفكير والشعور",
+                titleEn: "Mental & Emotional Verbs",
+                emoji: "🧠",
+                level: "A2",
+                phase: "أشهر الكلمات · الأفعال",
+                description: "أفعال العقل والمشاعر والإدراك",
+                scene: "ما يدور في عقلك وقلبك",
+                cards: [
+                    { term: "believe / hope", ar: "يصدّق / يأمل", awbw: "believe للإيمان، hope للأمل", ex: ["I believe you = أصدّقك", "I hope so = آمل ذلك", "believe in yourself = آمن بنفسك", "we hope to win = نأمل الفوز", "I can't believe it = لا أصدّق"], tip: "believe للتصديق، hope للأمل", scene: "💭 تصديق وأمل" },
+                    { term: "remember / forget", ar: "يتذكّر / ينسى", awbw: "remember/forget متضادان", ex: ["remember this = تذكّر هذا", "don't forget = لا تنسَ", "I remember you = أتذكّرك", "I forgot = نسيت", "remember to call = تذكّر أن تتصل"], tip: "remember للتذكّر، forget للنسيان", scene: "🧠 تذكّر ونسيان" },
+                    { term: "understand / mean", ar: "يفهم / يعني", awbw: "understand/understood", ex: ["I understand = أفهم", "what do you mean? = ماذا تعني؟", "do you understand? = هل تفهم؟", "it means yes = يعني نعم", "I don't understand = لا أفهم"], tip: "understand للفهم، mean للقصد", scene: "💡 فهم وقصد" },
+                    { term: "like / love", ar: "يحب / يعشق", awbw: "like إعجاب، love حب أقوى", ex: ["I like coffee = أحب القهوة", "I love you = أحبك", "do you like it? = هل يعجبك؟", "she loves music = تعشق الموسيقى", "I'd like some = أريد بعضاً"], tip: "like للإعجاب، love للحب العميق", scene: "❤️ إعجاب وحب" },
+                    { term: "want / need", ar: "يريد / يحتاج", awbw: "want رغبة، need ضرورة", ex: ["I want this = أريد هذا", "I need help = أحتاج مساعدة", "what do you want? = ماذا تريد؟", "you need rest = تحتاج راحة", "I don't want = لا أريد"], tip: "want للرغبة، need للحاجة", scene: "🎯 رغبة وحاجة" },
+                    { term: "hate / fear", ar: "يكره / يخاف", awbw: "hate كره، fear خوف", ex: ["I hate waiting = أكره الانتظار", "don't fear = لا تخف", "she hates lies = تكره الكذب", "I fear nothing = لا أخاف شيئاً", "they hate it = يكرهونه"], tip: "hate للكره، fear للخوف", scene: "😠 كره وخوف" },
+                    { term: "hear / listen", ar: "يسمع / يستمع", awbw: "hear تلقائي، listen بقصد", ex: ["I hear you = أسمعك", "listen to me = استمع إليّ", "did you hear? = هل سمعت؟", "listen carefully = استمع بعناية", "I can't hear = لا أسمع"], tip: "hear للسماع العابر، listen للإنصات", scene: "👂 سماع وإنصات" },
+                    { term: "watch / look", ar: "يشاهد / ينظر", awbw: "watch متابعة، look نظرة", ex: ["watch the movie = شاهد الفيلم", "look at me = انظر إليّ", "I'm watching = أنا أشاهد", "look here = انظر هنا", "watch out = انتبه"], tip: "watch للمشاهدة المستمرة، look للنظرة", scene: "👀 مشاهدة ونظر" },
+                    { term: "decide / choose", ar: "يقرّر / يختار", awbw: "decide/decided, choose/chose", ex: ["I decided = قرّرت", "choose one = اختر واحداً", "you decide = أنت تقرّر", "choose wisely = اختر بحكمة", "hard to decide = صعب أن أقرّر"], tip: "decide للقرار، choose للاختيار", scene: "⚖️ قرار واختيار" },
+                    { term: "learn / teach", ar: "يتعلّم / يعلّم", awbw: "learn/learned, teach/taught", ex: ["learn English = تعلّم الإنجليزية", "teach me = علّمني", "I'm learning = أتعلّم", "she teaches math = تعلّم الرياضيات", "learn from mistakes = تعلّم من الأخطاء"], tip: "learn للتعلّم، teach للتعليم", scene: "📚 تعلّم وتعليم" },
+                    { term: "change / become", ar: "يغيّر / يصبح", awbw: "change تغيير، become صيرورة", ex: ["change your mind = غيّر رأيك", "become better = أصبح أفضل", "things change = الأشياء تتغير", "it became hard = أصبح صعباً", "change is good = التغيير جيد"], tip: "change للتغيير، become للتحول", scene: "🔄 تغيير وتحول" }
+                ]
+            }
+            ,
+            // ───────── الصفات: الوصف الأساسي ─────────
+            vm_adj_basic: {
+                title: "أشهر الصفات: الوصف الأساسي",
+                titleEn: "Basic Adjectives",
+                emoji: "🎨",
+                level: "A1",
+                phase: "أشهر الكلمات · الصفات",
+                description: "الصفات الأكثر استخداماً (الحجم والجودة)",
+                scene: "تصف الأشياء من حولك",
+                cards: [
+                    { term: "big / small", ar: "كبير / صغير", awbw: "متضادان للحجم", ex: ["a big house = بيت كبير", "a small car = سيارة صغيرة", "too big = كبير جداً", "very small = صغير جداً", "big problem = مشكلة كبيرة"], tip: "big للكبير، small للصغير", scene: "📏 الحجم" },
+                    { term: "good / bad", ar: "جيد / سيئ", awbw: "متضادان للجودة", ex: ["good idea = فكرة جيدة", "bad weather = طقس سيئ", "very good = جيد جداً", "not bad = ليس سيئاً", "a good day = يوم جيد"], tip: "good للجيد، bad للسيئ", scene: "⭐ الجودة" },
+                    { term: "new / old", ar: "جديد / قديم", awbw: "متضادان للعمر", ex: ["a new phone = هاتف جديد", "an old book = كتاب قديم", "brand new = جديد تماماً", "how old? = كم العمر؟", "the old days = الأيام القديمة"], tip: "new للجديد، old للقديم", scene: "🆕 العمر/الحداثة" },
+                    { term: "hot / cold", ar: "حار / بارد", awbw: "متضادان للحرارة", ex: ["hot coffee = قهوة حارة", "cold water = ماء بارد", "it's hot today = الجو حار اليوم", "too cold = بارد جداً", "hot and cold = حار وبارد"], tip: "hot للحار، cold للبارد", scene: "🌡️ الحرارة" },
+                    { term: "fast / slow", ar: "سريع / بطيء", awbw: "متضادان للسرعة", ex: ["a fast car = سيارة سريعة", "slow internet = إنترنت بطيء", "too fast = سريع جداً", "go slow = اذهب ببطء", "fast food = طعام سريع"], tip: "fast للسريع، slow للبطيء", scene: "⚡ السرعة" },
+                    { term: "easy / hard", ar: "سهل / صعب", awbw: "متضادان للصعوبة", ex: ["an easy test = اختبار سهل", "a hard question = سؤال صعب", "very easy = سهل جداً", "it's hard = إنه صعب", "easy to learn = سهل التعلّم"], tip: "easy للسهل، hard للصعب", scene: "🎯 الصعوبة" },
+                    { term: "long / short", ar: "طويل / قصير", awbw: "متضادان للطول", ex: ["a long road = طريق طويل", "short hair = شعر قصير", "too long = طويل جداً", "a short time = وقت قصير", "long story = قصة طويلة"], tip: "long للطويل، short للقصير", scene: "📐 الطول" },
+                    { term: "high / low", ar: "عالٍ / منخفض", awbw: "متضادان للارتفاع", ex: ["high price = سعر عالٍ", "low voice = صوت منخفض", "very high = عالٍ جداً", "low battery = بطارية منخفضة", "high quality = جودة عالية"], tip: "high للعالي، low للمنخفض", scene: "📊 الارتفاع" },
+                    { term: "right / wrong", ar: "صحيح / خطأ", awbw: "متضادان للصواب", ex: ["the right answer = الجواب الصحيح", "wrong number = رقم خطأ", "you're right = أنت محق", "that's wrong = هذا خطأ", "right or wrong = صح أم خطأ"], tip: "right للصحيح، wrong للخطأ", scene: "✅ الصواب" },
+                    { term: "full / empty", ar: "ممتلئ / فارغ", awbw: "متضادان للامتلاء", ex: ["a full cup = كوب ممتلئ", "empty box = صندوق فارغ", "the room is full = الغرفة ممتلئة", "empty street = شارع فارغ", "full of people = مليء بالناس"], tip: "full للممتلئ، empty للفارغ", scene: "🥤 الامتلاء" }
+                ]
+            },
+            // ───────── الصفات: المشاعر والحالات ─────────
+            vm_adj_feelings: {
+                title: "أشهر الصفات: المشاعر والحالات",
+                titleEn: "Feelings & States",
+                emoji: "😊",
+                level: "A2",
+                phase: "أشهر الكلمات · الصفات",
+                description: "صفات تصف المشاعر والأحوال",
+                scene: "تصف شعورك وحالتك",
+                cards: [
+                    { term: "happy / sad", ar: "سعيد / حزين", awbw: "متضادان للمشاعر", ex: ["I'm happy = أنا سعيد", "she looks sad = تبدو حزينة", "very happy = سعيد جداً", "don't be sad = لا تحزن", "happy birthday = عيد ميلاد سعيد"], tip: "happy للسعادة، sad للحزن", scene: "😊 السعادة/الحزن" },
+                    { term: "tired / ready", ar: "متعب / مستعد", awbw: "حالتان شائعتان", ex: ["I'm tired = أنا متعب", "are you ready? = هل أنت مستعد؟", "very tired = متعب جداً", "I'm ready = أنا مستعد", "get ready = استعد"], tip: "tired للتعب، ready للاستعداد", scene: "😴 التعب/الاستعداد" },
+                    { term: "hungry / thirsty", ar: "جائع / عطشان", awbw: "حاجتان جسديتان", ex: ["I'm hungry = أنا جائع", "are you thirsty? = هل أنت عطشان؟", "so hungry = جائع جداً", "I feel thirsty = أشعر بالعطش", "hungry and thirsty = جائع وعطشان"], tip: "hungry للجوع، thirsty للعطش", scene: "🍽️ الجوع/العطش" },
+                    { term: "afraid / sure", ar: "خائف / متأكد", awbw: "حالتان ذهنيتان", ex: ["I'm afraid = أنا خائف", "are you sure? = هل أنت متأكد؟", "don't be afraid = لا تخف", "I'm sure = أنا متأكد", "afraid of dogs = خائف من الكلاب"], tip: "afraid للخوف، sure للتأكد", scene: "😨 الخوف/اليقين" },
+                    { term: "busy / free", ar: "مشغول / متفرّغ", awbw: "متضادان للوقت", ex: ["I'm busy = أنا مشغول", "are you free? = هل أنت متفرّغ؟", "too busy = مشغول جداً", "I'm free now = أنا متفرّغ الآن", "busy day = يوم مشغول"], tip: "busy للانشغال، free للفراغ", scene: "📅 الانشغال/الفراغ" },
+                    { term: "important / interesting", ar: "مهم / ممتع", awbw: "صفتان للقيمة", ex: ["very important = مهم جداً", "an interesting book = كتاب ممتع", "it's important = إنه مهم", "how interesting = كم هو ممتع", "important news = أخبار مهمة"], tip: "important للأهمية، interesting للإثارة", scene: "⭐ الأهمية/المتعة" },
+                    { term: "beautiful / nice", ar: "جميل / لطيف", awbw: "صفتان إيجابيتان", ex: ["a beautiful day = يوم جميل", "nice to meet you = سررت بلقائك", "very beautiful = جميل جداً", "that's nice = هذا لطيف", "beautiful view = منظر جميل"], tip: "beautiful للجمال، nice للطافة", scene: "🌸 الجمال/اللطف" },
+                    { term: "different / same", ar: "مختلف / نفس", awbw: "متضادان للمقارنة", ex: ["totally different = مختلف تماماً", "the same thing = نفس الشيء", "we're different = نحن مختلفون", "same as before = نفس السابق", "different colors = ألوان مختلفة"], tip: "different للاختلاف، same للتطابق", scene: "🔀 الاختلاف/التطابق" },
+                    { term: "true / real", ar: "صحيح / حقيقي", awbw: "صفتان للواقع", ex: ["is it true? = هل هو صحيح؟", "a real friend = صديق حقيقي", "that's true = هذا صحيح", "in real life = في الحياة الحقيقية", "true love = حب حقيقي"], tip: "true للصدق، real للواقعية", scene: "✓ الصدق/الواقعية" },
+                    { term: "sorry / glad", ar: "آسف / مسرور", awbw: "تعبيران شائعان", ex: ["I'm sorry = أنا آسف", "I'm glad = أنا مسرور", "so sorry = آسف جداً", "glad to help = مسرور بالمساعدة", "sorry for that = آسف على ذلك"], tip: "sorry للاعتذار، glad للسرور", scene: "🙏 الاعتذار/السرور" }
+                ]
+            },
+            // ───────── الأسماء: أشهر الأسماء اليومية ─────────
+            vm_nouns: {
+                title: "أشهر الأسماء (أشياء وأماكن)",
+                titleEn: "Common Nouns",
+                emoji: "📦",
+                level: "A1",
+                phase: "أشهر الكلمات · الأسماء",
+                description: "الأسماء الأكثر شيوعاً في الحياة",
+                scene: "أشياء وأماكن تذكرها يومياً",
+                cards: [
+                    { term: "time / day", ar: "وقت / يوم", awbw: "أساسيان للزمن", ex: ["what time? = أي وقت؟", "a good day = يوم جيد", "no time = لا وقت", "every day = كل يوم", "on time = في الوقت"], tip: "time للوقت، day لليوم", scene: "🕐 الزمن" },
+                    { term: "people / person", ar: "أناس / شخص", awbw: "person مفرد، people جمع", ex: ["many people = أناس كثيرون", "a nice person = شخص لطيف", "good people = أناس طيبون", "one person = شخص واحد", "young people = شباب"], tip: "person للفرد، people للجمع", scene: "👥 الأشخاص" },
+                    { term: "place / home", ar: "مكان / بيت", awbw: "place عام، home خاص", ex: ["a nice place = مكان جميل", "go home = اذهب للبيت", "this place = هذا المكان", "at home = في البيت", "my home = بيتي"], tip: "place للمكان، home للبيت", scene: "🏠 المكان" },
+                    { term: "work / job", ar: "عمل / وظيفة", awbw: "work عام، job محدد", ex: ["go to work = اذهب للعمل", "a good job = وظيفة جيدة", "hard work = عمل شاق", "find a job = ابحث عن وظيفة", "at work = في العمل"], tip: "work للعمل، job للوظيفة", scene: "💼 العمل" },
+                    { term: "money / water", ar: "مال / ماء", awbw: "أساسيان (غير معدودين)", ex: ["I need money = أحتاج مالاً", "drink water = اشرب ماء", "no money = لا مال", "cold water = ماء بارد", "save money = وفّر مالاً"], tip: "money للمال، water للماء", scene: "💧 ضروريات" },
+                    { term: "food / thing", ar: "طعام / شيء", awbw: "thing عام جداً", ex: ["good food = طعام جيد", "what thing? = أي شيء؟", "I love food = أحب الطعام", "one thing = شيء واحد", "many things = أشياء كثيرة"], tip: "food للطعام، thing للشيء العام", scene: "🍽️ أشياء" },
+                    { term: "way / part", ar: "طريقة / جزء", awbw: "way طريق/أسلوب، part جزء", ex: ["the best way = أفضل طريقة", "a part of it = جزء منه", "this way = من هنا", "the first part = الجزء الأول", "no way = مستحيل"], tip: "way للطريقة، part للجزء", scene: "🛤️ مفاهيم" },
+                    { term: "year / week", ar: "سنة / أسبوع", awbw: "وحدتان زمنيتان", ex: ["this year = هذه السنة", "next week = الأسبوع القادم", "last year = السنة الماضية", "every week = كل أسبوع", "a few years = بضع سنين"], tip: "year للسنة، week للأسبوع", scene: "📅 وحدات زمنية" },
+                    { term: "name / number", ar: "اسم / رقم", awbw: "هوية وعدد", ex: ["my name is = اسمي", "phone number = رقم الهاتف", "your name = اسمك", "a big number = رقم كبير", "what's your name? = ما اسمك؟"], tip: "name للاسم، number للرقم", scene: "🔢 هوية" },
+                    { term: "problem / question", ar: "مشكلة / سؤال", awbw: "تحدٍّ واستفسار", ex: ["a big problem = مشكلة كبيرة", "a good question = سؤال جيد", "no problem = لا مشكلة", "ask a question = اسأل سؤالاً", "solve the problem = حل المشكلة"], tip: "problem للمشكلة، question للسؤال", scene: "❓ تحديات" }
+                ]
+            }
+        };
+
+        // دوال تثبيت أشهر الكلمات
+        function installVocabUnit(unitKey) {
+            const unit = VOCAB_MASTERY[unitKey];
+            if (!unit) return { added: 0 };
+            const catName = unit.emoji + ' ' + unit.title;
+            if (!categories.includes(catName)) { categories.push(catName); saveCats(); }
+            const existing = new Set(words.filter(w => w.c === catName).map(w => w.w));
+            let added = 0;
+            unit.cards.forEach(item => {
+                if (existing.has(item.term)) return;
+                words.push({
+                    w: item.term, m: item.ar, c: catName, qType: 'basic',
+                    arWordByWord: item.awbw, examples: item.ex, memoryTip: item.tip,
+                    categoryLabel: item.scene || unit.title, sceneContext: item.scene,
+                    level: unit.level, frequency: '⭐⭐⭐⭐⭐',
+                    intervalIdx: 0, nextReview: Date.now(), ef: 2.5,
+                    reps: 0, lapses: 0, stability: 0, difficulty: 5
+                });
+                added++;
+            });
+            saveWords();
+            return { added: added, catName: catName, unitTitle: unit.title };
+        }
+
+        function installFullVocab() {
+            let totalAdded = 0;
+            const installedUnits = [];
+            Object.keys(VOCAB_MASTERY).forEach(function(unitKey) {
+                const result = installVocabUnit(unitKey);
+                totalAdded += result.added;
+                if (result.added > 0) installedUnits.push(result.unitTitle);
+            });
+            if (typeof refreshAllSettings === 'function') refreshAllSettings();
+            if (typeof updateHeroStats === 'function') updateHeroStats();
+            showToast('📚 تم تثبيت ' + totalAdded + ' كلمة!');
+            return { totalAdded: totalAdded, units: installedUnits.length };
+        }
+
+        // متصفّح أشهر الكلمات
+        function openVocabBrowser() {
+            var existing = document.getElementById('vocab-modal');
+            if (existing) existing.remove();
+            var modal = document.createElement('div');
+            modal.id = 'vocab-modal';
+            modal.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:9999; display:flex; align-items:flex-end;';
+            modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+
+            var units = Object.entries(VOCAB_MASTERY);
+            var totalCards = 0;
+            units.forEach(function(pair) { totalCards += pair[1].cards.length; });
+
+            var phases = {};
+            units.forEach(function(pair) {
+                var u = pair[1];
+                if (!phases[u.phase]) phases[u.phase] = [];
+                phases[u.phase].push(pair);
+            });
+
+            var phasesHtml = '';
+            Object.keys(phases).forEach(function(phaseName) {
+                var phaseUnits = phases[phaseName];
+                var unitsHtml = '';
+                phaseUnits.forEach(function(pair) {
+                    var key = pair[0];
+                    var unit = pair[1];
+                    var isInstalled = categories.includes(unit.emoji + ' ' + unit.title);
+                    var btnBg = isInstalled ? 'rgba(78,205,196,0.10)' : 'linear-gradient(135deg, var(--green), var(--violet))';
+                    var btnColor = isInstalled ? 'var(--green)' : 'white';
+                    var btnBorder = isInstalled ? '1px solid var(--green)' : 'none';
+                    var btnText = isInstalled ? '✓ مُثبّتة' : '⬇️ ثبّت';
+                    var borderColor = isInstalled ? 'var(--green)' : 'var(--border)';
+                    unitsHtml += '<div style="padding:14px; background:rgba(255,255,255,0.03); border:1px solid ' + borderColor + '; border-radius:12px;">'
+                        + '<div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">'
+                        + '<div style="width:44px; height:44px; background:linear-gradient(135deg, var(--green), var(--violet)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px;">' + unit.emoji + '</div>'
+                        + '<div style="flex:1;">'
+                        + '<div style="font-size:14px; font-weight:700; color:var(--text);">' + escapeHtml(unit.title) + '</div>'
+                        + '<div style="font-size:11px; color:var(--text-muted); margin-top:2px;">' + escapeHtml(unit.titleEn) + ' · ' + unit.level + '</div>'
+                        + '</div>'
+                        + '<span style="padding:3px 8px; background:rgba(78,205,196,0.15); color:var(--green); border-radius:8px; font-size:10px; font-weight:700;">' + unit.cards.length + ' كلمة</span>'
+                        + '</div>'
+                        + '<div style="font-size:11px; color:var(--text-muted); line-height:1.6; margin-bottom:10px;">📍 ' + escapeHtml(unit.description) + '</div>'
+                        + '<div style="display:flex; gap:6px;">'
+                        + '<button onclick="vocabInstallUnit(\'' + key + '\')" style="flex:1; padding:10px; background:' + btnBg + '; color:' + btnColor + '; border:' + btnBorder + '; border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px;">' + btnText + '</button>'
+                        + '<button onclick="printOneUnit(\'VOCAB_MASTERY\', \'' + key + '\')" style="padding:10px 14px; background:rgba(78,205,196,0.12); color:var(--green); border:1px solid var(--green); border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px; white-space:nowrap;">🖨️ طباعة</button>'
+                        + '</div></div>';
+                });
+                phasesHtml += '<div style="margin-bottom:18px;">'
+                    + '<div style="font-size:12px; font-weight:700; color:var(--green); margin-bottom:10px; padding:6px 12px; background:rgba(78,205,196,0.08); border-radius:8px; display:inline-block;">📚 ' + escapeHtml(phaseName) + '</div>'
+                    + '<div style="display:flex; flex-direction:column; gap:10px;">' + unitsHtml + '</div></div>';
+            });
+
+            var h = '<div style="background:var(--card-bg); border-radius:16px 16px 0 0; max-width:480px; width:100%; margin:auto auto 0; max-height:92vh; display:flex; flex-direction:column;">'
+                + '<div style="padding:16px 20px; border-bottom:1px solid var(--border); background:linear-gradient(135deg, rgba(78,205,196,0.10), rgba(138,79,255,0.10));">'
+                + '<div style="display:flex; justify-content:space-between; align-items:center;">'
+                + '<div><div style="font-size:17px; font-weight:700; color:var(--text);">📚 أشهر الكلمات</div>'
+                + '<div style="font-size:11px; color:var(--text-muted); margin-top:3px;">أفعال وصفات وأسماء بأمثلة غنية</div></div>'
+                + '<button onclick="document.getElementById(\'vocab-modal\').remove()" style="background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--text); width:32px; height:32px; border-radius:8px; cursor:pointer;">✕</button>'
+                + '</div></div>'
+                + '<div style="flex:1; overflow-y:auto; padding:16px 20px;">'
+                + '<div style="padding:14px; background:rgba(78,205,196,0.06); border:1px solid rgba(78,205,196,0.25); border-radius:12px; margin-bottom:16px;">'
+                + '<div style="font-size:12px; color:var(--text); line-height:1.9;">'
+                + '🏃 <b>الأفعال:</b> open/close, give/take, believe/hope<br>'
+                + '🎨 <b>الصفات:</b> big/small, happy/sad, easy/hard<br>'
+                + '📦 <b>الأسماء:</b> time, people, place, work<br>'
+                + '🎯 <b>' + totalCards + ' كلمة</b> · 5 أمثلة لكل كلمة · قاعدة 20/80</div></div>'
+                + '<button onclick="vocabInstallAll()" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--green), var(--violet)); color:white; border:none; border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:8px;">⬇️ ثبّت كل الكلمات (' + totalCards + ')</button>'
+                + '<button onclick="printFullCurriculum(\'VOCAB_MASTERY\')" style="width:100%; padding:13px; background:rgba(78,205,196,0.10); color:var(--green); border:1px solid var(--green); border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:16px;">🖨️ طباعة الكل (بلا تثبيت)</button>'
+                + phasesHtml
+                + '</div>'
+                + '<div style="padding:14px 20px; border-top:1px solid var(--border);">'
+                + '<button onclick="document.getElementById(\'vocab-modal\').remove()" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); color:var(--text-muted); border:1px solid var(--border); border-radius:10px; font-family:Cairo; font-weight:700; cursor:pointer;">إغلاق</button>'
+                + '</div></div>';
+
+            modal.innerHTML = h;
+            document.body.appendChild(modal);
+        }
+
+        function vocabInstallUnit(key) {
+            var r = installVocabUnit(key);
+            showToast('✅ تم تثبيت ' + r.added + ' كلمة');
+            openVocabBrowser();
+        }
+        function vocabInstallAll() {
+            installFullVocab();
+            var m = document.getElementById('vocab-modal');
+            if (m) m.remove();
+        }
+
+
+
+        // ═══════════════════════════════════════════════════════════════
+        // 🗝️ اللغة كأداة: ابدأ التحدث اليوم (Chris Lonsdale)
+        // ═══════════════════════════════════════════════════════════════
+        // الأسئلة السحرية + عبارات البقاء - تحوّلك من حافظ سلبي لمتعلّم ذاتي
+        // مبني على: Action 3 (استخدم اللغة) + محرّك التعلّم الذاتي
+        // الفكرة: هذه ليست للحفظ - بل لتستخدمها فوراً فتتعلّم بنفسك
+        // ═══════════════════════════════════════════════════════════════
+        const MAGIC_TOOLKIT = {
+            mt_magic_questions: {
+                title: "الأسئلة السحرية الأربعة",
+                titleEn: "The 4 Magic Questions",
+                emoji: "🗝️",
+                level: "A1",
+                phase: "اللغة كأداة · ابدأ اليوم",
+                description: "4 أسئلة تفتح كل اللغة - تجعلك تتعلّم ذاتياً",
+                scene: "استخدمها فوراً لتتعلّم أي كلمة بنفسك",
+                cards: [
+                    { term: "What is this?", ar: "ما هذا؟", awbw: "السؤال الأول السحري", ex: ["What is this? = ما هذا؟ (تشير لشيء)", "What is this called? = ماذا يُسمى هذا؟", "What's this in English? = ما هذا بالإنجليزية؟", "What are these? = ما هذه؟", "اسأله عن أي شيء حولك = يعطيك كلمة جديدة"], tip: "🗝️ كل مرة تسأل، تكسب كلمة جديدة مجاناً", scene: "👉 تشير لشيء وتسأل عنه" },
+                    { term: "How do you say...?", ar: "كيف تقول...؟", awbw: "السؤال الثاني - الأقوى", ex: ["How do you say 'كتاب'? = كيف تقول كتاب؟", "How do you say this in English? = كيف تقول هذا بالإنجليزية؟", "How do you say 'شكراً'? = كيف تقول شكراً؟", "How do you pronounce it? = كيف تنطقها؟", "يحوّل أي كلمة عربية تعرفها لإنجليزية"], tip: "🗝️ يبني جسراً من لغتك للإنجليزية", scene: "🌉 تترجم ما تعرفه" },
+                    { term: "I don't understand", ar: "لا أفهم", awbw: "السؤال الثالث - يبقيك متعلّماً", ex: ["I don't understand = لا أفهم", "Sorry, I don't understand = آسف، لا أفهم", "I don't understand this word = لا أفهم هذه الكلمة", "What do you mean? = ماذا تعني؟", "قلها بلا خجل = تفتح لك شرحاً"], tip: "🗝️ الاعتراف بعدم الفهم بداية الفهم", scene: "🤔 تطلب توضيحاً" },
+                    { term: "Say it again, please", ar: "قلها ثانية، رجاءً", awbw: "السؤال الرابع - يثبّت السمع", ex: ["Say it again, please = قلها ثانية رجاءً", "Can you repeat that? = هل تكررها؟", "One more time, please = مرة أخرى رجاءً", "Slowly, please = ببطء رجاءً", "كرّرها حتى تسمعها بوضوح"], tip: "🗝️ التكرار يدرّب أذنك على الصوت", scene: "🔁 تطلب التكرار" }
+                ]
+            },
+            mt_self_learning: {
+                title: "محرّك التعلّم الذاتي",
+                titleEn: "Self-Learning Engine",
+                emoji: "⚙️",
+                level: "A2",
+                phase: "اللغة كأداة · ابدأ اليوم",
+                description: "عبارات تجعلك تتعلّم من أي محادثة",
+                scene: "تحوّل كل لقاء لدرس",
+                cards: [
+                    { term: "What does ... mean?", ar: "ماذا تعني ...؟", awbw: "تسأل عن معنى كلمة", ex: ["What does 'busy' mean? = ماذا تعني busy؟", "What does this mean? = ماذا يعني هذا؟", "What does that word mean? = ماذا تعني تلك الكلمة؟", "I don't know this word = لا أعرف هذه الكلمة", "تسأل = تتعلّم معنى جديداً"], tip: "⚙️ كل كلمة مجهولة فرصة تعلّم", scene: "❓ تستفسر عن معنى" },
+                    { term: "Is this correct?", ar: "هل هذا صحيح؟", awbw: "تتأكد من صحة كلامك", ex: ["Is this correct? = هل هذا صحيح؟", "Did I say it right? = هل قلتها صح؟", "Is my English okay? = هل إنجليزيتي مقبولة؟", "Correct me, please = صحّح لي رجاءً", "تطلب التصحيح = تتحسّن أسرع"], tip: "⚙️ الخطأ المُصحَّح درسٌ يدوم", scene: "✓ تتأكد من صوابك" },
+                    { term: "How do you spell it?", ar: "كيف تتهجّاها؟", awbw: "تتعلّم كتابة الكلمة", ex: ["How do you spell it? = كيف تتهجّاها؟", "Can you spell that? = هل تتهجّاها؟", "How do you write it? = كيف تكتبها؟", "Letter by letter, please = حرفاً حرفاً رجاءً", "تتعلّم النطق والكتابة معاً"], tip: "⚙️ التهجئة تثبّت الكلمة في ذاكرتك", scene: "🔤 تتعلّم الكتابة" },
+                    { term: "Can you give an example?", ar: "هل تعطي مثالاً؟", awbw: "تفهم بالسياق", ex: ["Can you give an example? = هل تعطي مثالاً؟", "For example? = مثلاً؟", "How do I use it? = كيف أستخدمها؟", "In a sentence, please = في جملة رجاءً", "المثال يوضّح الاستخدام الحقيقي"], tip: "⚙️ المثال يحوّل المعرفة لمهارة", scene: "💡 تطلب توضيحاً بمثال" }
+                ]
+            },
+            mt_survival: {
+                title: "عبارات البقاء الأولى",
+                titleEn: "First Survival Phrases",
+                emoji: "🛟",
+                level: "A1",
+                phase: "اللغة كأداة · ابدأ اليوم",
+                description: "عبارات تستخدمها من أول يوم للتواصل",
+                scene: "تتواصل حتى بكلمات قليلة",
+                cards: [
+                    { term: "Excuse me", ar: "عذراً / اسمح لي", awbw: "تبدأ بها أي حديث", ex: ["Excuse me = عذراً (لتسأل)", "Excuse me, where is...? = عذراً، أين...؟", "Excuse me, can you help? = عذراً، أتساعدني؟", "Excuse me, sir = عذراً، سيدي", "مفتاح بدء أي محادثة بأدب"], tip: "🛟 تفتح الحديث باحترام", scene: "🙋 تستوقف أحداً" },
+                    { term: "Thank you / You're welcome", ar: "شكراً / عفواً", awbw: "أساس التواصل المهذّب", ex: ["Thank you = شكراً", "Thank you very much = شكراً جزيلاً", "You're welcome = عفواً (رد)", "Thanks a lot = شكراً كثيراً", "No problem = لا مشكلة (رد ودّي)"], tip: "🛟 الأدب يفتح القلوب والأبواب", scene: "🙏 تشكر وتردّ" },
+                    { term: "I'm sorry", ar: "أنا آسف", awbw: "للاعتذار أو الاستفسار", ex: ["I'm sorry = أنا آسف", "I'm sorry, I'm late = آسف، تأخرت", "Sorry, what? = عذراً، ماذا؟", "I'm so sorry = آسف جداً", "تعتذر وتستوضح بها"], tip: "🛟 الاعتذار يحلّ المواقف بسلاسة", scene: "😔 تعتذر بلطف" },
+                    { term: "Could you help me?", ar: "هل يمكنك مساعدتي؟", awbw: "تطلب المساعدة بأدب", ex: ["Could you help me? = هل تساعدني؟", "Can you help me, please? = أتساعدني رجاءً؟", "I need some help = أحتاج مساعدة", "I have a question = لديّ سؤال", "تطلب العون باحترام"], tip: "🛟 طلب المساعدة قوة لا ضعف", scene: "🆘 تطلب العون" },
+                    { term: "Nice to meet you", ar: "سررت بلقائك", awbw: "للتعارف", ex: ["Nice to meet you = سررت بلقائك", "Hello, I'm Ahmed = مرحباً، أنا أحمد", "How are you? = كيف حالك؟", "I'm fine, thanks = بخير، شكراً", "تبدأ علاقة بكلمات بسيطة"], tip: "🛟 الانطباع الأول يبدأ بتحية", scene: "🤝 تتعارف" }
+                ]
+            }
+        };
+
+        // دوال التثبيت
+        function installMagicUnit(unitKey) {
+            const unit = MAGIC_TOOLKIT[unitKey];
+            if (!unit) return { added: 0 };
+            const catName = unit.emoji + ' ' + unit.title;
+            if (!categories.includes(catName)) { categories.push(catName); saveCats(); }
+            const existing = new Set(words.filter(w => w.c === catName).map(w => w.w));
+            let added = 0;
+            unit.cards.forEach(item => {
+                if (existing.has(item.term)) return;
+                words.push({
+                    w: item.term, m: item.ar, c: catName, qType: 'basic',
+                    arWordByWord: item.awbw, examples: item.ex, memoryTip: item.tip,
+                    categoryLabel: item.scene || unit.title, sceneContext: item.scene,
+                    level: unit.level, frequency: '⭐⭐⭐⭐⭐',
+                    intervalIdx: 0, nextReview: Date.now(), ef: 2.5,
+                    reps: 0, lapses: 0, stability: 0, difficulty: 5
+                });
+                added++;
+            });
+            saveWords();
+            return { added: added, catName: catName, unitTitle: unit.title };
+        }
+
+        function installFullMagic() {
+            let totalAdded = 0;
+            const installedUnits = [];
+            Object.keys(MAGIC_TOOLKIT).forEach(function(unitKey) {
+                const result = installMagicUnit(unitKey);
+                totalAdded += result.added;
+                if (result.added > 0) installedUnits.push(result.unitTitle);
+            });
+            if (typeof refreshAllSettings === 'function') refreshAllSettings();
+            if (typeof updateHeroStats === 'function') updateHeroStats();
+            showToast('🗝️ تم تثبيت ' + totalAdded + ' أداة تواصل!');
+            return { totalAdded: totalAdded, units: installedUnits.length };
+        }
+
+        function openMagicBrowser() {
+            var existing = document.getElementById('magic-modal');
+            if (existing) existing.remove();
+            var modal = document.createElement('div');
+            modal.id = 'magic-modal';
+            modal.style.cssText = 'position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:9999; display:flex; align-items:flex-end;';
+            modal.onclick = function(e) { if (e.target === modal) modal.remove(); };
+
+            var units = Object.entries(MAGIC_TOOLKIT);
+            var totalCards = 0;
+            units.forEach(function(pair) { totalCards += pair[1].cards.length; });
+
+            var unitsHtml = '';
+            units.forEach(function(pair) {
+                var key = pair[0];
+                var unit = pair[1];
+                var isInstalled = categories.includes(unit.emoji + ' ' + unit.title);
+                var btnBg = isInstalled ? 'rgba(78,205,196,0.10)' : 'linear-gradient(135deg, var(--gold), var(--cyan))';
+                var btnColor = isInstalled ? 'var(--green)' : 'white';
+                var btnBorder = isInstalled ? '1px solid var(--green)' : 'none';
+                var btnText = isInstalled ? '✓ مُثبّتة' : '⬇️ ثبّت';
+                var borderColor = isInstalled ? 'var(--green)' : 'var(--border)';
+                unitsHtml += '<div style="padding:14px; background:rgba(255,255,255,0.03); border:1px solid ' + borderColor + '; border-radius:12px; margin-bottom:10px;">'
+                    + '<div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">'
+                    + '<div style="width:44px; height:44px; background:linear-gradient(135deg, var(--gold), var(--cyan)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:22px;">' + unit.emoji + '</div>'
+                    + '<div style="flex:1;">'
+                    + '<div style="font-size:14px; font-weight:700; color:var(--text);">' + escapeHtml(unit.title) + '</div>'
+                    + '<div style="font-size:11px; color:var(--text-muted); margin-top:2px;">' + escapeHtml(unit.titleEn) + ' · ' + unit.level + '</div>'
+                    + '</div>'
+                    + '<span style="padding:3px 8px; background:rgba(255,209,102,0.15); color:var(--gold); border-radius:8px; font-size:10px; font-weight:700;">' + unit.cards.length + ' عبارة</span>'
+                    + '</div>'
+                    + '<div style="font-size:11px; color:var(--text-muted); line-height:1.6; margin-bottom:10px;">📍 ' + escapeHtml(unit.description) + '</div>'
+                    + '<div style="display:flex; gap:6px;">'
+                    + '<button onclick="magicInstallUnit(\'' + key + '\')" style="flex:1; padding:10px; background:' + btnBg + '; color:' + btnColor + '; border:' + btnBorder + '; border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px;">' + btnText + '</button>'
+                    + '<button onclick="printOneUnit(\'MAGIC_TOOLKIT\', \'' + key + '\')" style="padding:10px 14px; background:rgba(255,209,102,0.12); color:var(--gold); border:1px solid var(--gold); border-radius:8px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:12px; white-space:nowrap;">🖨️ طباعة</button>'
+                    + '</div></div>';
+            });
+
+            var h = '<div style="background:var(--card-bg); border-radius:16px 16px 0 0; max-width:480px; width:100%; margin:auto auto 0; max-height:92vh; display:flex; flex-direction:column;">'
+                + '<div style="padding:16px 20px; border-bottom:1px solid var(--border); background:linear-gradient(135deg, rgba(255,209,102,0.10), rgba(0,212,255,0.10));">'
+                + '<div style="display:flex; justify-content:space-between; align-items:center;">'
+                + '<div><div style="font-size:17px; font-weight:700; color:var(--text);">🗝️ اللغة كأداة</div>'
+                + '<div style="font-size:11px; color:var(--text-muted); margin-top:3px;">عبارات تجعلك تتعلّم ذاتياً (Chris Lonsdale)</div></div>'
+                + '<button onclick="document.getElementById(\'magic-modal\').remove()" style="background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--text); width:32px; height:32px; border-radius:8px; cursor:pointer;">✕</button>'
+                + '</div></div>'
+                + '<div style="flex:1; overflow-y:auto; padding:16px 20px;">'
+                + '<div style="padding:14px; background:rgba(255,209,102,0.06); border:1px solid rgba(255,209,102,0.25); border-radius:12px; margin-bottom:16px;">'
+                + '<div style="font-size:12px; color:var(--text); line-height:1.9;">'
+                + '🗝️ <b>الفكرة من TEDx (Chris Lonsdale):</b><br>'
+                + 'هذه ليست للحفظ فقط - بل <b>لتستخدمها فوراً</b><br>'
+                + 'كل سؤال تسأله = كلمة جديدة تتعلّمها بنفسك<br>'
+                + '🎯 <b>' + totalCards + ' عبارة</b> · تحوّلك لمتعلّم ذاتي</div></div>'
+                + '<div style="padding:12px; background:rgba(0,212,255,0.06); border:1px solid rgba(0,212,255,0.2); border-radius:10px; margin-bottom:16px;">'
+                + '<div style="font-size:11px; color:var(--cyan); line-height:1.7;">💡 <b>نصيحة أستاذك:</b> احفظ هذه الأربعة الأولى اليوم، واستخدمها مع أي شخص أو حتى مع نفسك. ستتعلّم اللغة من <b>استخدامها</b>، لا من حفظها فقط.</div></div>'
+                + '<button onclick="magicInstallAll()" style="width:100%; padding:14px; background:linear-gradient(135deg, var(--gold), var(--cyan)); color:white; border:none; border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:14px; margin-bottom:8px;">⬇️ ثبّت كل الأدوات (' + totalCards + ')</button>'
+                + '<button onclick="printFullCurriculum(\'MAGIC_TOOLKIT\')" style="width:100%; padding:13px; background:rgba(255,209,102,0.10); color:var(--gold); border:1px solid var(--gold); border-radius:12px; font-family:Cairo; font-weight:700; cursor:pointer; font-size:13px; margin-bottom:16px;">🖨️ طباعة الكل (بلا تثبيت)</button>'
+                + unitsHtml
+                + '</div>'
+                + '<div style="padding:14px 20px; border-top:1px solid var(--border);">'
+                + '<button onclick="document.getElementById(\'magic-modal\').remove()" style="width:100%; padding:12px; background:rgba(255,255,255,0.05); color:var(--text-muted); border:1px solid var(--border); border-radius:10px; font-family:Cairo; font-weight:700; cursor:pointer;">إغلاق</button>'
+                + '</div></div>';
+
+            modal.innerHTML = h;
+            document.body.appendChild(modal);
+        }
+
+        function magicInstallUnit(key) {
+            var r = installMagicUnit(key);
+            showToast('✅ تم تثبيت ' + r.added + ' عبارة');
+            openMagicBrowser();
+        }
+        function magicInstallAll() {
+            installFullMagic();
+            var m = document.getElementById('magic-modal');
+            if (m) m.remove();
         }
 
 
